@@ -23,5 +23,11 @@
   "ignorePatterns": ["dist/", "node_modules/"],
   "rules": {
     "semi": 2
-  }
+  },
+  "prettier/prettier": [
+    "error",
+    {
+      "endOfLine": "auto"
+    }
+  ]
 }
