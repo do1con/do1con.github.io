@@ -13,7 +13,6 @@ const Container = styled.div`
 const IndexPage: FunctionComponent = function () {
   return (
     <Container>
-      <GlobalStyle />
       <Introduction />
       <Footer />
     </Container>
