@@ -9,6 +9,8 @@ const ProfileImageWrapper = styled.img`
   height: 120px;
   margin-bottom: 30px;
   border-radius: 50%;
+  display: block;
+  margin: 0 auto;
 `;
 
 const ProfileImage: FunctionComponent = function () {
