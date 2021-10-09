@@ -18,7 +18,7 @@ const Introduction: FunctionComponent = function () {
       </p>
       <Div32px className="m-auto">
         <Link to="https://github.com/do1con">
-          <GithubIcon fill="#ffffff" width="32" height="32" />
+          <GithubIcon fill="#ffffff" width="24" height="24" />
         </Link>
       </Div32px>
     </header>
@@ -26,8 +26,8 @@ const Introduction: FunctionComponent = function () {
 };
 
 const Div32px = styled.div`
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
 `;
 
 export default Introduction;
