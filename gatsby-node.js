@@ -1,5 +1,3 @@
-require('ts-node').register();
-
 const path = require('path');
 
 // Setup Import Alias
@@ -18,7 +16,3 @@ exports.onCreateWebpackConfig = ({ getConfig, actions }) => {
     },
   });
 };
-
-const { createPages } = require('./src/lib/createPages');
-
-exports.createPages = createPages;
