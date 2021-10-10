@@ -1,8 +1,9 @@
 import React, { FunctionComponent } from 'react';
 import styled from '@emotion/styled';
-import GlobalStyle from 'components/Common/GlobalStyle';
-import Footer from 'components/Common/Footer';
-import Introduction from 'components/Main/Introduction';
+// import GlobalStyle from 'components/Common/GlobalStyle';
+// import Footer from 'components/Layouts/Footer';
+// import Introduction from 'components/Layouts/Header';
+import CommonLayout from 'components/Layouts/CommonLayout';
 
 const Container = styled.div`
   display: flex;
@@ -13,8 +14,9 @@ const Container = styled.div`
 const IndexPage: FunctionComponent = function () {
   return (
     <Container>
-      <Introduction />
-      <Footer />
+      <CommonLayout>
+        <div>ㅇㅇㅇㅇ</div>
+      </CommonLayout>
     </Container>
   );
 };
