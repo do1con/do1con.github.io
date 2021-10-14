@@ -1,6 +1,10 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import CommonLayout from 'components/Layouts/CommonLayout';
+import '../styles/base.min.css';
+import '../styles/components.min.css';
+import '../styles/typography.min.css';
+import '../styles/utilities.min.css';
 
 export default function Template({
   data, // this prop will be injected by the GraphQL query below.
@@ -9,12 +13,16 @@ export default function Template({
   const { frontmatter, html } = markdownRemark;
   return (
     <CommonLayout>
+      <h2 className="font-extrabold text-3xl block my-3">
+        {frontmatter.title}
+      </h2>
+      <p className="text-xs text-gray-500 block my-3">
+        작성일: {frontmatter.date}
+      </p>
       <div className="blog-post-container">
         <div className="blog-post">
-          <h1>{frontmatter.title}</h1>
-          <h2>{frontmatter.date}</h2>
           <div
-            className="blog-post-content"
+            className="blog-post-content prose"
             dangerouslySetInnerHTML={{ __html: html }}
           />
         </div>
