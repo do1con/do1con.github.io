@@ -7,15 +7,21 @@ interface props {
   children?: React.ReactNode;
 }
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+`;
+
 const CommonLayout: React.FC<props> = ({ children }: props) => {
   return (
-    <>
+    <Container>
       <ContentWrapper>
         <Header />
-        {children}
+        <div className="p-12 mx-auto mt-6 w-full max-w-4xl">{children}</div>
       </ContentWrapper>
       <Footer />
-    </>
+    </Container>
   );
 };
 

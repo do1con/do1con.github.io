@@ -7,12 +7,6 @@ import CommonLayout from 'components/Layouts/CommonLayout';
 import PostList from 'components/Common/PostList';
 import { graphql } from 'gatsby';
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-`;
-
 export interface postDataTypes {
   node: {
     frontmatter: {
@@ -66,11 +60,9 @@ const IndexPage: React.FC<propTypes> = ({ data }) => {
   });
   const postList: postDataTypes[] = data.allMarkdownRemark.edges;
   return (
-    <Container>
-      <CommonLayout>
-        <PostList posts={postList} />
-      </CommonLayout>
-    </Container>
+    <CommonLayout>
+      <PostList posts={postList} />
+    </CommonLayout>
   );
 };
 

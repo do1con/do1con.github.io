@@ -20,11 +20,7 @@ const PostList: React.FC<propTypes> = ({ posts }) => {
       );
     },
   );
-  return (
-    <div className="p-12 mx-auto mt-6 w-full max-w-4xl">
-      <ul>{postCardList}</ul>
-    </div>
-  );
+  return <ul>{postCardList}</ul>;
 };
 
 export default PostList;
