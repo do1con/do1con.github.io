@@ -13,15 +13,62 @@ const Container = styled.div`
   height: 100vh;
 `;
 
-const IndexPage: React.FC = data => {
+export interface postDataTypes {
+  node: {
+    frontmatter: {
+      categories: string[];
+      date: string;
+      featuredImage: {
+        childImageSharp: {
+          fluid: {
+            src: string;
+            srcSet: string;
+          };
+          gatsbyImageData: any;
+          // gatsbyImageData: {
+          //   height: number;
+          //   images: {
+          //     fallback: {
+          //       sizes: string;
+          //       src: string;
+          //       srcSet: string;
+          //     };
+          //     sources: Array<any>;
+          //   };
+          //   layout: string;
+          //   placeholer: {
+          //     fallback: string;
+          //   };
+          //   width: number;
+          // };
+        };
+      };
+      slug: string;
+      summary: string;
+      thumbnail?: any;
+      title: string;
+    };
+  };
+}
+
+interface propTypes {
+  data: {
+    allMarkdownRemark: {
+      edges: Array<postDataTypes>;
+    };
+  };
+}
+
+const IndexPage: React.FC<propTypes> = ({ data }) => {
   React.useEffect(() => {
     console.log('여기');
     console.log('data', data);
   });
+  const postList: postDataTypes[] = data.allMarkdownRemark.edges;
   return (
     <Container>
       <CommonLayout>
-        <PostList />
+        <PostList posts={postList} />
       </CommonLayout>
     </Container>
   );
@@ -30,13 +77,25 @@ const IndexPage: React.FC = data => {
 export default IndexPage;
 
 export const pageQuery = graphql`
-  query MyQuery {
-    allMarkdownRemark {
+  query getPostList {
+    allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date, frontmatter___title] }
+    ) {
       edges {
         node {
+          id
           frontmatter {
             title
+            summary
+            date(formatString: "YYYY.MM.DD.")
+            categories
+            thumbnail
             slug
+            featuredImage {
+              childImageSharp {
+                gatsbyImageData(width: 110, height: 110)
+              }
+            }
           }
         }
       }

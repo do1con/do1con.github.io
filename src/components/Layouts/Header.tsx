@@ -6,20 +6,21 @@ import GithubIcon from 'images/github.svg';
 
 const Header: React.FC = function () {
   return (
-    <header className="w-56 min-h-screen bg-green-500">
-      <h1 className="text-center m-4">
+    <header className="w-96 min-h-screen max-w-xs bg-green-500">
+      <h1 className="text-center m-4 font-extrabold">
         <Link to="/" className="text-2xl text-white hover:text-white">
           Seongsoo's Blog
         </Link>
       </h1>
       <ProfileImage />
       <p className="m-4 text-white text-xs break-words">
-        안녕하세요. 음악듣기를 좋아하는 주니어 개발자입니다. 웹개발을 공부하고 있습니다.
+        안녕하세요. 음악듣기를 좋아하는 주니어 개발자입니다. 웹개발을 공부하고
+        있습니다.
       </p>
       <Div24px className="m-auto">
-        <Link to="https://github.com/do1con">
+        <a href="https://github.com/do1con">
           <GithubIcon fill="#ffffff" width="24" height="24" />
-        </Link>
+        </a>
       </Div24px>
     </header>
   );

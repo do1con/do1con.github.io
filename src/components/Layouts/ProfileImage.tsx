@@ -5,12 +5,11 @@ const PROFILE_IMAGE_LINK =
   'https://avatars.githubusercontent.com/u/55742179?s=400&u=25b1b1d3fbf7338ef8052fc5e44ce470621aa341&v=4';
 
 const ProfileImageWrapper = styled.img`
-  width: 120px;
-  height: 120px;
-  margin-bottom: 30px;
+  width: 160px;
+  height: 160px;
   border-radius: 50%;
   display: block;
-  margin: 0 auto;
+  margin: 30px auto;
 `;
 
 const ProfileImage: FunctionComponent = function () {
