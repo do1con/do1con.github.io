@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import CommonLayout from 'components/Layouts/CommonLayout';
+import Utterances from 'components/Common/Utterances';
 import '../styles/base.min.css';
 import '../styles/components.min.css';
 import '../styles/typography.min.css';
@@ -19,7 +20,7 @@ export default function Template({
       <p className="text-xs text-gray-500 block my-3">
         작성일: {frontmatter.date}
       </p>
-      <div className="blog-post-container">
+      <div className="blog-post-container mb-4">
         <div className="blog-post">
           <div
             className="blog-post-content prose"
@@ -27,6 +28,7 @@ export default function Template({
           />
         </div>
       </div>
+      <Utterances repo="do1con/kss_blog" />
     </CommonLayout>
   );
 }
