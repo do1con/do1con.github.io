@@ -16,7 +16,7 @@ const Utterances: React.FC<IUtterancesProps> = React.memo(({ repo }) => {
       src,
       repo,
       'issue-term': 'pathname',
-      label: 'comment',
+      label: 'Comment',
       theme: 'github-light',
       crossOrigin: 'anonymous',
       async: 'true',

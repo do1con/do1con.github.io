@@ -3,3 +3,4 @@ package.json
 package-lock.json
 public
 *.css
+src/lib/client.js
