@@ -8,3 +8,8 @@
 
 import './src/styles/global.css';
 import 'prismjs/themes/prism-tomorrow.css';
+import CommonLayout from 'components/Layouts/CommonLayout';
+
+export const wrapRootElement = ({ element }) => (
+  <CommonLayout>{element}</CommonLayout>
+);

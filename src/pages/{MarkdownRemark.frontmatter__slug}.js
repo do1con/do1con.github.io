@@ -1,6 +1,5 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import CommonLayout from 'components/Layouts/CommonLayout';
 import Utterances from 'components/Common/Utterances';
 import '../styles/base.min.css';
 import '../styles/components.min.css';
@@ -13,7 +12,7 @@ export default function Template({
   const { markdownRemark } = data; // data.markdownRemark holds your post data
   const { frontmatter, html } = markdownRemark;
   return (
-    <CommonLayout>
+    <>
       <h2 className="font-extrabold text-3xl block my-3">
         {frontmatter.title}
       </h2>
@@ -29,7 +28,7 @@ export default function Template({
         </div>
       </div>
       <Utterances repo="do1con/kss_blog" />
-    </CommonLayout>
+    </>
   );
 }
 export const pageQuery = graphql`

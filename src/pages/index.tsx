@@ -3,7 +3,6 @@ import styled from '@emotion/styled';
 // import GlobalStyle from 'components/Common/GlobalStyle';
 // import Footer from 'components/Layouts/Footer';
 // import Introduction from 'components/Layouts/Header';
-import CommonLayout from 'components/Layouts/CommonLayout';
 import PostList from 'components/Common/PostList';
 import { graphql } from 'gatsby';
 
@@ -60,9 +59,9 @@ const IndexPage: React.FC<propTypes> = ({ data }) => {
   });
   const postList: postDataTypes[] = data.allMarkdownRemark.edges;
   return (
-    <CommonLayout>
+    <>
       <PostList posts={postList} />
-    </CommonLayout>
+    </>
   );
 };
 
