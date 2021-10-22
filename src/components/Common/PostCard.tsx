@@ -1,10 +1,10 @@
 import React from 'react';
-import { postDataTypes } from 'pages/index';
-import { GatsbyImage } from 'gatsby-plugin-image';
+import { postType } from 'context/InitalState';
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import { Link } from 'gatsby';
 
 interface propTypes {
-  postData: postDataTypes;
+  postData: postType;
 }
 
 const PostCard: React.FC<propTypes> = ({ postData }) => {
@@ -14,7 +14,11 @@ const PostCard: React.FC<propTypes> = ({ postData }) => {
     <div>
       <Link to={frontmatter.slug}>
         <div className="flex w-full my-8">
-          <GatsbyImage image={imageInfo} alt="hi" className="mr-4" />
+          <GatsbyImage
+            image={imageInfo as IGatsbyImageData}
+            alt="hi"
+            className="mr-4"
+          />
           <div>
             <h2 className="font-extrabold text-xl block">
               {frontmatter.title}
