@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
-import PostList from 'components/Common/PostList';
+import { useContext, useDispatch } from 'context/combineContext';
 import { graphql } from 'gatsby';
 import { postType } from 'context/InitalState';
-import { useContext, useDispatch } from 'context/combineContext';
+import PostList from 'components/Common/PostList';
+import CategorySelector from 'components/Common/CategorySelector';
 
 interface propTypes {
   data: {
@@ -13,7 +14,7 @@ interface propTypes {
 }
 
 const IndexPage: React.FC<propTypes> = ({ data }) => {
-  const { categories, postNumber, posts } = useContext();
+  const { categories, postNumber, posts, selectedCategory } = useContext();
   const dispatch = useDispatch();
   const postList: postType[] = data.allMarkdownRemark.edges;
   useEffect(() => {
@@ -40,6 +41,10 @@ const IndexPage: React.FC<propTypes> = ({ data }) => {
 
   return (
     <>
+      <CategorySelector
+        categories={categories}
+        selectedCategory={selectedCategory}
+      />
       <PostList postList={postList} />
     </>
   );

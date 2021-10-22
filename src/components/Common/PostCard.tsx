@@ -8,11 +8,6 @@ interface propTypes {
 }
 
 const PostCard: React.FC<propTypes> = ({ postData }) => {
-  React.useEffect(() => {
-    console.log('포스트 카드');
-    console.log('postData', postData);
-    console.log('링크', frontmatter.slug);
-  });
   const { frontmatter } = postData.node;
   const imageInfo = frontmatter.featuredImage.childImageSharp.gatsbyImageData;
   return (

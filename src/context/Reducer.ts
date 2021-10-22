@@ -4,7 +4,8 @@ import InitialState, { stateType, postType } from 'context/InitalState';
 type ActionType =
   | { type: 'UPDATE_POSTNUMBER'; value: number }
   | { type: 'UPDATE_CATEGORIES'; value: string[] }
-  | { type: 'UPDATE_POSTS'; value: postType[] };
+  | { type: 'UPDATE_POSTS'; value: postType[] }
+  | { type: 'UPDATE_SELECTED_CATEGORY'; value: string };
 
 export type DispatchType = Dispatch<ActionType>;
 
@@ -27,6 +28,11 @@ export const Reducer = (
       return {
         ...state,
         posts: action.value,
+      };
+    case 'UPDATE_SELECTED_CATEGORY':
+      return {
+        ...state,
+        selectedCategory: action.value,
       };
     default:
       throw new Error('Unhandled action');
