@@ -3,7 +3,7 @@ import InitialState, { stateType } from 'context/InitalState';
 
 type ActionType =
   | { type: 'UPDATE_POSTS'; value: number }
-  | { type: 'UPDATE_CATEGORIES'; value: number };
+  | { type: 'UPDATE_CATEGORIES'; value: string[] };
 
 export type DispatchType = Dispatch<ActionType>;
 

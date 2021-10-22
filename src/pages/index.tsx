@@ -1,53 +1,13 @@
 import React from 'react';
 import styled from '@emotion/styled';
-// import GlobalStyle from 'components/Common/GlobalStyle';
-// import Footer from 'components/Layouts/Footer';
-// import Introduction from 'components/Layouts/Header';
 import PostList from 'components/Common/PostList';
 import { graphql } from 'gatsby';
-
-export interface postDataTypes {
-  node: {
-    frontmatter: {
-      categories: string[];
-      date: string;
-      featuredImage: {
-        childImageSharp: {
-          fluid: {
-            src: string;
-            srcSet: string;
-          };
-          gatsbyImageData: any;
-          // gatsbyImageData: {
-          //   height: number;
-          //   images: {
-          //     fallback: {
-          //       sizes: string;
-          //       src: string;
-          //       srcSet: string;
-          //     };
-          //     sources: Array<any>;
-          //   };
-          //   layout: string;
-          //   placeholer: {
-          //     fallback: string;
-          //   };
-          //   width: number;
-          // };
-        };
-      };
-      slug: string;
-      summary: string;
-      thumbnail?: any;
-      title: string;
-    };
-  };
-}
+import { postType } from 'context/InitalState';
 
 interface propTypes {
   data: {
     allMarkdownRemark: {
-      edges: Array<postDataTypes>;
+      edges: Array<postType>;
     };
   };
 }
@@ -57,10 +17,10 @@ const IndexPage: React.FC<propTypes> = ({ data }) => {
     console.log('여기');
     console.log('data', data);
   });
-  const postList: postDataTypes[] = data.allMarkdownRemark.edges;
+  const postList: postType[] = data.allMarkdownRemark.edges;
   return (
     <>
-      <PostList posts={postList} />
+      <PostList postList={postList} />
     </>
   );
 };
