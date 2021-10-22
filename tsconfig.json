@@ -9,6 +9,7 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "baseUrl": "./src",
+    "moduleResolution": "node",
     "paths": {
       "components/*": ["./components/*"],
       "utils/*": ["./utils/*"],
@@ -19,6 +20,6 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true
   },
-  "include": ["src/**/*.tsx"],
+  "include": ["src/**/*.tsx", "src/lib/custom.d.ts"],
   "exclude": ["node_modules"]
 }
