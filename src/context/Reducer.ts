@@ -1,9 +1,10 @@
 import { Dispatch } from 'react';
-import InitialState, { stateType } from 'context/InitalState';
+import InitialState, { stateType, postType } from 'context/InitalState';
 
 type ActionType =
-  | { type: 'UPDATE_POSTS'; value: number }
-  | { type: 'UPDATE_CATEGORIES'; value: string[] };
+  | { type: 'UPDATE_POSTNUMBER'; value: number }
+  | { type: 'UPDATE_CATEGORIES'; value: string[] }
+  | { type: 'UPDATE_POSTS'; value: postType[] };
 
 export type DispatchType = Dispatch<ActionType>;
 
@@ -12,15 +13,20 @@ export const Reducer = (
   action: ActionType,
 ) => {
   switch (action.type) {
-    case 'UPDATE_POSTS':
+    case 'UPDATE_POSTNUMBER':
       return {
         ...state,
-        posts: action.value,
+        postNumber: action.value,
       };
     case 'UPDATE_CATEGORIES':
       return {
         ...state,
-        categories: [...state.categories],
+        categories: [...action.value],
+      };
+    case 'UPDATE_POSTS':
+      return {
+        ...state,
+        posts: action.value,
       };
     default:
       throw new Error('Unhandled action');

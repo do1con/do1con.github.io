@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from '@emotion/styled';
+import React, { useEffect } from 'react';
 import PostList from 'components/Common/PostList';
 import { graphql } from 'gatsby';
 import { postType } from 'context/InitalState';
+import { useContext, useDispatch } from 'context/combineContext';
 
 interface propTypes {
   data: {
@@ -13,11 +13,31 @@ interface propTypes {
 }
 
 const IndexPage: React.FC<propTypes> = ({ data }) => {
-  React.useEffect(() => {
-    console.log('여기');
-    console.log('data', data);
-  });
+  const { categories, postNumber, posts } = useContext();
+  const dispatch = useDispatch();
   const postList: postType[] = data.allMarkdownRemark.edges;
+  useEffect(() => {
+    const unOrganizedCategories: string[] = [''].concat(
+      ...postList.map(category => category.node.frontmatter.categories),
+    );
+    const categoryList: string[] = unOrganizedCategories.filter(
+      (item, index) => unOrganizedCategories.indexOf(item) === index,
+    );
+    categoryList.shift();
+    dispatch({
+      type: 'UPDATE_CATEGORIES',
+      value: categoryList,
+    });
+    dispatch({
+      type: 'UPDATE_POSTNUMBER',
+      value: postList.length,
+    });
+    dispatch({
+      type: 'UPDATE_POSTS',
+      value: postList,
+    });
+  }, []);
+
   return (
     <>
       <PostList postList={postList} />
