@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styled from '@emotion/styled';
 import { useDispatch } from 'context/combineContext';
 
@@ -12,14 +12,42 @@ const CategorySelector: React.FC<propTypes> = ({
   selectedCategory,
 }) => {
   const dispatch = useDispatch();
-  const onClickCategoryItem = (el: any) => {
-    const categoryName = el.target.innerHTML.replace('#', '');
+  const [listHeight, setListHeight] = useState<number>(0);
+  const [showEllipsis, setShowEllipsis] = useState<boolean>(false);
+  const CategoryListBox = useRef<HTMLUListElement>(null);
+  useEffect(() => {
+    if (CategoryListBox.current) {
+      setListHeight(CategoryListBox.current.offsetHeight);
+    }
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+  useEffect(() => {
+    if (listHeight >= 48) {
+      setShowEllipsis(true);
+    } else {
+      setShowEllipsis(false);
+    }
+  }, [listHeight]);
+  const handleResize = () => {
+    if (CategoryListBox.current) {
+      setListHeight(CategoryListBox.current.offsetHeight);
+    }
+  };
+  const onClickCategoryItem = (event: React.MouseEvent<HTMLLIElement>) => {
+    const target = event.target as HTMLElement;
+    const categoryName: string = target.innerHTML.replace('#', '');
     dispatch({
       type: 'UPDATE_SELECTED_CATEGORY',
       value: categoryName,
     });
   };
-  const CategoryList: Array<JSX.Element> = categories.map(
+  const onClickEllipsis = () => {
+    setShowEllipsis(!showEllipsis);
+  };
+  const CategoryList: (JSX.Element | undefined)[] = categories.map(
     (data: string, key: number) => {
       return (
         <CategoryItem
@@ -34,7 +62,12 @@ const CategorySelector: React.FC<propTypes> = ({
   );
   return (
     <div className="m-4">
-      <ul className="inline-flex">
+      <ul
+        className={`flex flex-wrap overflow-hidden ${
+          showEllipsis ? 'max-h-20' : 'max-h-full'
+        }`}
+        ref={CategoryListBox}
+      >
         <CategoryItem
           selected={selectedCategory === 'All'}
           onClick={onClickCategoryItem}
@@ -43,15 +76,25 @@ const CategorySelector: React.FC<propTypes> = ({
         </CategoryItem>
         {CategoryList}
       </ul>
+      {showEllipsis && (
+        <EllipsisButton onClick={onClickEllipsis}>...더 보기</EllipsisButton>
+      )}
     </div>
   );
 };
 
 const CategoryItem = styled.li<{ selected: boolean }>`
   display: block;
-  margin: 0.75rem;
+  margin: 0.5rem;
   color: ${props => (props.selected ? '#242a33' : '#757d85')};
   font-weight: ${props => (props.selected ? 'bold' : 'normal')};
+  cursor: pointer;
+`;
+
+const EllipsisButton = styled.button`
+  margin: 0.75rem;
+  display: block;
+  color: #757d85;
   cursor: pointer;
 `;
 
