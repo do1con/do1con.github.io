@@ -45,7 +45,7 @@ const IndexPage: React.FC<propTypes> = ({ data }) => {
         categories={categories}
         selectedCategory={selectedCategory}
       />
-      <PostList postList={postList} />
+      <PostList postList={postList} selectedCategory={selectedCategory} />
     </>
   );
 };

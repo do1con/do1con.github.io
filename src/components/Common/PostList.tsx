@@ -4,16 +4,21 @@ import { postType } from 'context/InitalState';
 
 interface propTypes {
   postList: postType[];
+  selectedCategory: string;
 }
 
-const PostList: React.FC<propTypes> = ({ postList }) => {
-  const postCardList: Array<JSX.Element> = postList.map(
+const PostList: React.FC<propTypes> = ({ postList, selectedCategory }) => {
+  const postCardList: (JSX.Element | undefined)[] = postList.map(
     (data: postType, key: number) => {
-      return (
+      const returnElement = (
         <li key={key} className="my-2">
           <PostCard postData={data} />
         </li>
       );
+      if (selectedCategory === 'All') return returnElement;
+      const { categories } = data.node.frontmatter;
+      if (categories.indexOf(selectedCategory) >= 0) return returnElement;
+      return;
     },
   );
   return <ul>{postCardList}</ul>;
