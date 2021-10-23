@@ -4,8 +4,6 @@ import InitialState, { stateType, postType } from 'context/InitalState';
 type ActionType =
   | { type: 'UPDATE_POSTNUMBER'; value: number }
   | { type: 'UPDATE_CATEGORIES'; value: string[] }
-  | { type: 'UPDATE_SELECTED_CATEGORY'; value: string }
-  | { type: 'UPDATE_SEARCH_WORD'; value: string }
   | { type: 'UPDATE_PAGE_NUMBER'; value: number }
   | { type: 'UPDATE_TOTAL_PAGE_NUMBER'; value: number }
   | { type: 'UPDATE_ALL_POSTS'; value: postType[] }
@@ -27,16 +25,6 @@ export const Reducer = (
       return {
         ...state,
         categories: [...action.value],
-      };
-    case 'UPDATE_SELECTED_CATEGORY':
-      return {
-        ...state,
-        selectedCategory: action.value,
-      };
-    case 'UPDATE_SEARCH_WORD':
-      return {
-        ...state,
-        searchWord: action.value,
       };
     case 'UPDATE_PAGE_NUMBER':
       return {

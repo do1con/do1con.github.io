@@ -5,6 +5,12 @@ import { postType } from 'context/InitalState';
 import PostList from 'components/Common/PostList';
 import CategorySelector from 'components/Common/CategorySelector';
 import PostSearchBar from 'components/Common/PostSearchBar';
+import Pagination from 'components/Common/Pagination';
+import {
+  pageBandCalc,
+  maxPageFilter,
+  pagePostsCalc,
+} from 'lib/paginationCalculator';
 
 interface propTypes {
   data: {
@@ -15,9 +21,22 @@ interface propTypes {
 }
 
 const IndexPage: React.FC<propTypes> = ({ data }) => {
-  const { categories, allPosts, selectedCategory, searchWord } = useContext();
+  const { categories, pageNumber } = useContext();
   const dispatch = useDispatch();
-  const unFilteredPosts: postType[] = data.allMarkdownRemark.edges;
+  // const unFilteredPosts: postType[] = data.allMarkdownRemark.edges;
+  const unFilteredPosts: postType[] = data.allMarkdownRemark.edges.concat(
+    data.allMarkdownRemark.edges,
+    data.allMarkdownRemark.edges,
+    data.allMarkdownRemark.edges,
+    data.allMarkdownRemark.edges,
+    data.allMarkdownRemark.edges,
+    data.allMarkdownRemark.edges,
+    data.allMarkdownRemark.edges,
+    data.allMarkdownRemark.edges,
+    data.allMarkdownRemark.edges,
+    data.allMarkdownRemark.edges,
+    data.allMarkdownRemark.edges,
+  );
   const CategoryFilter = (postList: postType[]) => {
     return postList.filter(
       data =>
@@ -33,12 +52,36 @@ const IndexPage: React.FC<propTypes> = ({ data }) => {
         data.node.frontmatter.summary.indexOf(searchWord) >= 0,
     );
   };
-  const filteredPosts: postType[] | undefined = CategoryFilter(
-    SearchWordFilter(unFilteredPosts),
+  const [minPage, setMinPage] = useState<number>(1);
+  const [maxPage, setMaxPage] = useState<number>(1);
+  const [searchWord, setSearchWord] = useState<string>('');
+  const [selectedCategory, setSelectedCategory] = useState<string>('All');
+  const [filteredPosts, setFilteredPosts] = useState<postType[]>(
+    CategoryFilter(SearchWordFilter(unFilteredPosts)),
+  );
+  const [displayPosts, setDisplayPosts] = useState<postType[]>(
+    pagePostsCalc(filteredPosts, pageNumber),
   );
   useEffect(() => {
+    calcDisplayPosts();
+  }, [selectedCategory, searchWord, pageNumber]);
+  useEffect(() => {
+    calcDisplayPosts();
+  }, []);
+
+  const calcDisplayPosts = () => {
+    const newFilteredPosts = CategoryFilter(SearchWordFilter(unFilteredPosts));
+    const { minPageNumber, maxPageNumber } = pageBandCalc(pageNumber);
+    setMinPage(minPageNumber);
+    setMaxPage(maxPageFilter(newFilteredPosts.length, maxPageNumber));
+    dispatch({
+      type: 'UPDATE_TOTAL_PAGE_NUMBER',
+      value: maxPageNumber,
+    });
+    setFilteredPosts(CategoryFilter(SearchWordFilter(unFilteredPosts)));
+    setDisplayPosts(pagePostsCalc(newFilteredPosts, pageNumber));
     const unOrganizedCategories: string[] = [''].concat(
-      ...allPosts.map(category => category.node.frontmatter.categories),
+      ...unFilteredPosts.map(category => category.node.frontmatter.categories),
     );
     const categoryList: string[] = unOrganizedCategories.filter(
       (item, index) => unOrganizedCategories.indexOf(item) === index,
@@ -56,16 +99,22 @@ const IndexPage: React.FC<propTypes> = ({ data }) => {
       type: 'UPDATE_ALL_POSTS',
       value: unFilteredPosts,
     });
-  }, []);
+  };
 
   return (
     <>
-      <PostSearchBar />
+      <PostSearchBar searchWord={searchWord} setSearchWord={setSearchWord} />
       <CategorySelector
         categories={categories}
         selectedCategory={selectedCategory}
+        setSelectedCategory={setSelectedCategory}
       />
-      <PostList postList={filteredPosts} selectedCategory={selectedCategory} />
+      <PostList postList={displayPosts} selectedCategory={selectedCategory} />
+      <Pagination
+        minPage={minPage}
+        maxPage={maxPage}
+        currentPage={pageNumber}
+      />
     </>
   );
 };

@@ -5,11 +5,13 @@ import { useDispatch } from 'context/combineContext';
 type propTypes = {
   categories: string[];
   selectedCategory: string;
+  setSelectedCategory: Function;
 };
 
 const CategorySelector: React.FC<propTypes> = ({
   categories,
   selectedCategory,
+  setSelectedCategory,
 }) => {
   const dispatch = useDispatch();
   const [listHeight, setListHeight] = useState<number>(0);
@@ -40,9 +42,10 @@ const CategorySelector: React.FC<propTypes> = ({
   const onClickCategoryItem = (event: React.MouseEvent<HTMLLIElement>) => {
     const target = event.target as HTMLElement;
     const categoryName: string = target.innerHTML.replace('#', '');
+    setSelectedCategory(categoryName);
     dispatch({
-      type: 'UPDATE_SELECTED_CATEGORY',
-      value: categoryName,
+      type: 'UPDATE_PAGE_NUMBER',
+      value: 1,
     });
   };
   const onClickEllipsis = () => {

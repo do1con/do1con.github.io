@@ -1,12 +1,10 @@
 export type stateType = {
-  postNumber: number;
-  categories: string[];
-  selectedCategory: string;
-  searchWord: string;
-  pageNumber: number;
-  totalPageNumber: number;
-  allPosts: postType[];
-  shownPosts: postType[];
+  postNumber: number; // 게시글 수
+  categories: string[]; // 게시글 카테고리 리스트
+  pageNumber: number; // 현재 페이지 넘버
+  totalPageNumber: number; // 최대 페이지 넘버
+  allPosts: postType[]; // 모든 게시글 정보
+  shownPosts: postType[]; // 유저에게 보여질 게시글 정보
 };
 
 export type postType = {
@@ -43,8 +41,6 @@ export type postType = {
 const InitialState: stateType = {
   postNumber: 0,
   categories: [''],
-  selectedCategory: 'All',
-  searchWord: '',
   pageNumber: 1,
   totalPageNumber: 1,
   allPosts: [

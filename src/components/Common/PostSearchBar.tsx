@@ -1,14 +1,13 @@
 import React from 'react';
-import { useContext, useDispatch } from 'context/combineContext';
 
-const PostSearchBar: React.FC = () => {
-  const { searchWord } = useContext;
-  const dispatch = useDispatch();
+type propTypes = {
+  searchWord: string;
+  setSearchWord: Function;
+};
+
+const PostSearchBar: React.FC<propTypes> = ({ searchWord, setSearchWord }) => {
   const onChangeSearchBar = (event: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch({
-      type: 'UPDATE_SEARCH_WORD',
-      value: event.target.value,
-    });
+    setSearchWord(event.target.value);
   };
   return (
     <div className="flex w-full justify-items-center">
