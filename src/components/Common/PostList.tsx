@@ -21,7 +21,11 @@ const PostList: React.FC<propTypes> = ({ postList, selectedCategory }) => {
       return;
     },
   );
-  return <ul>{postCardList}</ul>;
+  return (
+    <>
+      <ul>{postCardList}</ul>
+    </>
+  );
 };
 
 export default PostList;

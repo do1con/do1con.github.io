@@ -16,12 +16,14 @@ const CategorySelector: React.FC<propTypes> = ({
   const [showEllipsis, setShowEllipsis] = useState<boolean>(false);
   const CategoryListBox = useRef<HTMLUListElement>(null);
   useEffect(() => {
-    handleResize();
     window.addEventListener('resize', handleResize);
     return () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+  useEffect(() => {
+    handleResize();
+  }, [categories]);
   useEffect(() => {
     if (listHeight >= 48) {
       setShowEllipsis(true);
@@ -32,6 +34,7 @@ const CategorySelector: React.FC<propTypes> = ({
   const handleResize = () => {
     if (CategoryListBox.current) {
       setListHeight(CategoryListBox.current.clientHeight);
+      if (CategoryListBox.current.clientHeight >= 48) setShowEllipsis(true);
     }
   };
   const onClickCategoryItem = (event: React.MouseEvent<HTMLLIElement>) => {
@@ -61,8 +64,8 @@ const CategorySelector: React.FC<propTypes> = ({
   return (
     <div className="mt-4 mb-t">
       <ul
-        className={`flex flex-wrap overflow-hidden ${
-          showEllipsis ? 'max-h-full' : 'max-h-full'
+        className={`flex flex-wrap justify-items-center overflow-hidden ${
+          showEllipsis ? 'max-h-20' : 'max-h-full'
         }`}
         ref={CategoryListBox}
       >

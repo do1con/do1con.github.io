@@ -6,7 +6,7 @@ import GithubIcon from 'images/github.svg';
 
 const Header: React.FC = function () {
   return (
-    <header className="w-96 min-h-screen max-w-xs bg-green-500">
+    <header className="w-96 min-h-screen max-w-xs bg-green-500 bg-fixed">
       <h1 className="text-center m-4 font-extrabold">
         <Link to="/" className="text-2xl text-white hover:text-white">
           Seongsoo's Blog
