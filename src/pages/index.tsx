@@ -4,6 +4,7 @@ import { graphql } from 'gatsby';
 import { postType } from 'context/InitalState';
 import PostList from 'components/Common/PostList';
 import CategorySelector from 'components/Common/CategorySelector';
+import PostSearchBar from 'components/Common/PostSearchBar';
 
 interface propTypes {
   data: {
@@ -27,7 +28,7 @@ const IndexPage: React.FC<propTypes> = ({ data }) => {
     categoryList.shift();
     dispatch({
       type: 'UPDATE_CATEGORIES',
-      value: categoryList,
+      value: categoryList.sort(),
     });
     dispatch({
       type: 'UPDATE_POSTNUMBER',
@@ -41,6 +42,7 @@ const IndexPage: React.FC<propTypes> = ({ data }) => {
 
   return (
     <>
+      <PostSearchBar />
       <CategorySelector
         categories={categories}
         selectedCategory={selectedCategory}
