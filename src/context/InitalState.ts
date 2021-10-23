@@ -2,10 +2,11 @@ export type stateType = {
   postNumber: number;
   categories: Array<string | any>;
   selectedCategory: string;
-  posts: postType[];
+  allPosts: postType[];
+  shownPosts: postType[];
 };
 
-export interface postType {
+export type postType = {
   node: {
     frontmatter: {
       categories: string[];
@@ -34,13 +35,51 @@ export interface postType {
       title: string;
     };
   };
-}
+};
 
 const InitialState: stateType = {
   postNumber: 0,
   categories: [''],
   selectedCategory: 'All',
-  posts: [
+  allPosts: [
+    {
+      node: {
+        frontmatter: {
+          categories: [''],
+          date: '',
+          featuredImage: {
+            childImageSharp: {
+              gatsbyImageData: {
+                backgroundColor: '',
+                height: 0,
+                images: {
+                  fallback: {
+                    sizes: '',
+                    src: '',
+                    srcSet: '',
+                  },
+                  sources: [
+                    {
+                      sizes: '',
+                      srcSet: '',
+                      type: '',
+                    },
+                  ],
+                },
+                layout: '',
+                width: 0,
+              },
+            },
+          },
+          slug: '',
+          summary: '',
+          thumbnail: '',
+          title: '',
+        },
+      },
+    },
+  ],
+  shownPosts: [
     {
       node: {
         frontmatter: {

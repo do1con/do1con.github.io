@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useContext, useDispatch } from 'context/combineContext';
 import { graphql } from 'gatsby';
 import { postType } from 'context/InitalState';
@@ -15,8 +15,9 @@ interface propTypes {
 }
 
 const IndexPage: React.FC<propTypes> = ({ data }) => {
-  const { categories, postNumber, posts, selectedCategory } = useContext();
+  const { categories, postNumber, allPosts, selectedCategory } = useContext();
   const dispatch = useDispatch();
+  const [shownPost, setShownPost] = useState<postType>();
   const postList: postType[] = data.allMarkdownRemark.edges;
   useEffect(() => {
     const unOrganizedCategories: string[] = [''].concat(
@@ -35,7 +36,7 @@ const IndexPage: React.FC<propTypes> = ({ data }) => {
       value: postList.length,
     });
     dispatch({
-      type: 'UPDATE_POSTS',
+      type: 'UPDATE_ALL_POSTS',
       value: postList,
     });
   }, []);
