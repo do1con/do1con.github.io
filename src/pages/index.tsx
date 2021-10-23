@@ -15,13 +15,25 @@ interface propTypes {
 }
 
 const IndexPage: React.FC<propTypes> = ({ data }) => {
-  const { categories, postNumber, allPosts, selectedCategory } = useContext();
+  const { categories, allPosts, selectedCategory, searchWord } = useContext();
   const dispatch = useDispatch();
-  const [shownPost, setShownPost] = useState<postType>();
-  const postList: postType[] = data.allMarkdownRemark.edges;
+  const unFilteredPosts: postType[] = data.allMarkdownRemark.edges;
+  const CategoryFilter = (postList: postType[]) => {
+    return postList.filter(
+      data =>
+        data.node.frontmatter.categories.indexOf(selectedCategory) >= 0 ||
+        selectedCategory === 'All',
+    );
+  };
+  const SearchWordFilter = (postList: postType[]) => {
+    return postList.filter(
+      data => data.node.frontmatter.title.indexOf(searchWord) >= 0,
+    );
+  };
+  const filteredPosts = CategoryFilter(SearchWordFilter(unFilteredPosts));
   useEffect(() => {
     const unOrganizedCategories: string[] = [''].concat(
-      ...postList.map(category => category.node.frontmatter.categories),
+      ...allPosts.map(category => category.node.frontmatter.categories),
     );
     const categoryList: string[] = unOrganizedCategories.filter(
       (item, index) => unOrganizedCategories.indexOf(item) === index,
@@ -33,11 +45,11 @@ const IndexPage: React.FC<propTypes> = ({ data }) => {
     });
     dispatch({
       type: 'UPDATE_POSTNUMBER',
-      value: postList.length,
+      value: unFilteredPosts.length,
     });
     dispatch({
       type: 'UPDATE_ALL_POSTS',
-      value: postList,
+      value: unFilteredPosts,
     });
   }, []);
 
@@ -48,7 +60,7 @@ const IndexPage: React.FC<propTypes> = ({ data }) => {
         categories={categories}
         selectedCategory={selectedCategory}
       />
-      <PostList postList={postList} selectedCategory={selectedCategory} />
+      <PostList postList={filteredPosts} selectedCategory={selectedCategory} />
     </>
   );
 };

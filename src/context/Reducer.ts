@@ -4,8 +4,9 @@ import InitialState, { stateType, postType } from 'context/InitalState';
 type ActionType =
   | { type: 'UPDATE_POSTNUMBER'; value: number }
   | { type: 'UPDATE_CATEGORIES'; value: string[] }
-  | { type: 'UPDATE_ALL_POSTS'; value: postType[] }
   | { type: 'UPDATE_SELECTED_CATEGORY'; value: string }
+  | { type: 'UPDATE_SEARCH_WORD'; value: string }
+  | { type: 'UPDATE_ALL_POSTS'; value: postType[] }
   | { type: 'UPDATE_SHOWN_POSTS'; value: postType[] };
 
 export type DispatchType = Dispatch<ActionType>;
@@ -25,15 +26,20 @@ export const Reducer = (
         ...state,
         categories: [...action.value],
       };
-    case 'UPDATE_ALL_POSTS':
-      return {
-        ...state,
-        allPosts: action.value,
-      };
     case 'UPDATE_SELECTED_CATEGORY':
       return {
         ...state,
         selectedCategory: action.value,
+      };
+    case 'UPDATE_SEARCH_WORD':
+      return {
+        ...state,
+        searchWord: action.value,
+      };
+    case 'UPDATE_ALL_POSTS':
+      return {
+        ...state,
+        allPosts: action.value,
       };
     case 'UPDATE_SHOWN_POSTS':
       return {
