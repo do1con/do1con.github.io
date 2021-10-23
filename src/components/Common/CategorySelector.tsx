@@ -16,9 +16,7 @@ const CategorySelector: React.FC<propTypes> = ({
   const [showEllipsis, setShowEllipsis] = useState<boolean>(false);
   const CategoryListBox = useRef<HTMLUListElement>(null);
   useEffect(() => {
-    if (CategoryListBox.current) {
-      setListHeight(CategoryListBox.current.offsetHeight);
-    }
+    handleResize();
     window.addEventListener('resize', handleResize);
     return () => {
       window.removeEventListener('resize', handleResize);
@@ -33,7 +31,7 @@ const CategorySelector: React.FC<propTypes> = ({
   }, [listHeight]);
   const handleResize = () => {
     if (CategoryListBox.current) {
-      setListHeight(CategoryListBox.current.offsetHeight);
+      setListHeight(CategoryListBox.current.clientHeight);
     }
   };
   const onClickCategoryItem = (event: React.MouseEvent<HTMLLIElement>) => {
@@ -61,10 +59,10 @@ const CategorySelector: React.FC<propTypes> = ({
     },
   );
   return (
-    <div className="m-4">
+    <div className="mt-4 mb-t">
       <ul
         className={`flex flex-wrap overflow-hidden ${
-          showEllipsis ? 'max-h-20' : 'max-h-full'
+          showEllipsis ? 'max-h-full' : 'max-h-full'
         }`}
         ref={CategoryListBox}
       >
@@ -77,7 +75,9 @@ const CategorySelector: React.FC<propTypes> = ({
         {CategoryList}
       </ul>
       {showEllipsis && (
-        <EllipsisButton onClick={onClickEllipsis}>...더 보기</EllipsisButton>
+        <EllipsisButton onClick={onClickEllipsis}>
+          ...모든 카테고리 보기
+        </EllipsisButton>
       )}
     </div>
   );
@@ -86,6 +86,7 @@ const CategorySelector: React.FC<propTypes> = ({
 const CategoryItem = styled.li<{ selected: boolean }>`
   display: block;
   margin: 0.5rem;
+  margin-left: 0;
   color: ${props => (props.selected ? '#242a33' : '#757d85')};
   font-weight: ${props => (props.selected ? 'bold' : 'normal')};
   cursor: pointer;
@@ -93,6 +94,7 @@ const CategoryItem = styled.li<{ selected: boolean }>`
 
 const EllipsisButton = styled.button`
   margin: 0.75rem;
+  margin-left: 0;
   display: block;
   color: #757d85;
   cursor: pointer;
