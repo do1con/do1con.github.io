@@ -6,6 +6,8 @@ type ActionType =
   | { type: 'UPDATE_CATEGORIES'; value: string[] }
   | { type: 'UPDATE_SELECTED_CATEGORY'; value: string }
   | { type: 'UPDATE_SEARCH_WORD'; value: string }
+  | { type: 'UPDATE_PAGE_NUMBER'; value: number }
+  | { type: 'UPDATE_TOTAL_PAGE_NUMBER'; value: number }
   | { type: 'UPDATE_ALL_POSTS'; value: postType[] }
   | { type: 'UPDATE_SHOWN_POSTS'; value: postType[] };
 
@@ -35,6 +37,16 @@ export const Reducer = (
       return {
         ...state,
         searchWord: action.value,
+      };
+    case 'UPDATE_PAGE_NUMBER':
+      return {
+        ...state,
+        pageNumber: action.value,
+      };
+    case 'UPDATE_TOTAL_PAGE_NUMBER':
+      return {
+        ...state,
+        totalPageNumber: action.value,
       };
     case 'UPDATE_ALL_POSTS':
       return {

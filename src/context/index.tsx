@@ -7,7 +7,7 @@ interface Props {
   children: JSX.Element | JSX.Element[];
 }
 
-const Context = createContext<stateType | undefined>(undefined);
+const Context = createContext<stateType | undefined>(InitialState);
 const DispatchContext = createContext<DispatchType | undefined>(undefined);
 
 const Provider = ({ children }: Props): JSX.Element => {

@@ -1,8 +1,10 @@
 export type stateType = {
   postNumber: number;
-  categories: Array<string | any>;
+  categories: string[];
   selectedCategory: string;
   searchWord: string;
+  pageNumber: number;
+  totalPageNumber: number;
   allPosts: postType[];
   shownPosts: postType[];
 };
@@ -43,6 +45,8 @@ const InitialState: stateType = {
   categories: [''],
   selectedCategory: 'All',
   searchWord: '',
+  pageNumber: 1,
+  totalPageNumber: 1,
   allPosts: [
     {
       node: {
