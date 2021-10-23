@@ -1,4 +1,5 @@
 import React from 'react';
+import { useDispatch } from 'context/combineContext';
 
 type propTypes = {
   searchWord: string;
@@ -6,7 +7,12 @@ type propTypes = {
 };
 
 const PostSearchBar: React.FC<propTypes> = ({ searchWord, setSearchWord }) => {
+  const dispatch = useDispatch();
   const onChangeSearchBar = (event: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch({
+      type: 'UPDATE_PAGE_NUMBER',
+      value: 1,
+    });
     setSearchWord(event.target.value);
   };
   return (
