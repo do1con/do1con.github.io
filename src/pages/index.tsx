@@ -27,10 +27,15 @@ const IndexPage: React.FC<propTypes> = ({ data }) => {
   };
   const SearchWordFilter = (postList: postType[]) => {
     return postList.filter(
-      data => data.node.frontmatter.title.indexOf(searchWord) >= 0,
+      data =>
+        data.node.frontmatter.title.indexOf(searchWord) >= 0 ||
+        data.node.frontmatter.categories.indexOf(searchWord) >= 0 ||
+        data.node.frontmatter.summary.indexOf(searchWord) >= 0,
     );
   };
-  const filteredPosts = CategoryFilter(SearchWordFilter(unFilteredPosts));
+  const filteredPosts: postType[] | undefined = CategoryFilter(
+    SearchWordFilter(unFilteredPosts),
+  );
   useEffect(() => {
     const unOrganizedCategories: string[] = [''].concat(
       ...allPosts.map(category => category.node.frontmatter.categories),

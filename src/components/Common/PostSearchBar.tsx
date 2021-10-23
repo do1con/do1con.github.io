@@ -16,13 +16,10 @@ const PostSearchBar: React.FC = () => {
         <input
           type="text"
           placeholder="게시글 검색"
-          className="border-solid rounded-l-lg border-gray-400 p-1 w-full border-t-2 border-l-2 border-b-2"
+          className="border-solid rounded-lg border-gray-400 p-1 w-full border-2"
           value={searchWord}
           onChange={onChangeSearchBar}
         />
-        <button className="w-20 bg-green-500 text-white rounded-r-lg">
-          검색
-        </button>
       </div>
     </div>
   );
