@@ -4,8 +4,9 @@ export function pageBandCalc(currentPage: number): {
   minPageNumber: number;
   maxPageNumber: number;
 } {
-  const minPageNumber = Math.floor(currentPage / 10) * 10 + 1;
-  const maxPageNumber = Math.ceil(currentPage / 10) * 10;
+  const calcNumb = currentPage % 10 ? currentPage : currentPage - 9;
+  const minPageNumber = Math.floor(calcNumb / 10) * 10 + 1;
+  const maxPageNumber = Math.ceil(calcNumb / 10) * 10;
   return {
     minPageNumber,
     maxPageNumber,
@@ -16,7 +17,7 @@ export function maxPageFilter(
   postNumber: number,
   MaxPageNumber: number,
 ): number {
-  if (postNumber / 5 < MaxPageNumber) {
+  if (Math.ceil(postNumber / 5) < MaxPageNumber) {
     return Math.ceil(postNumber / 5);
   }
   return MaxPageNumber;

@@ -23,20 +23,37 @@ interface propTypes {
 const IndexPage: React.FC<propTypes> = ({ data }) => {
   const { categories, pageNumber } = useContext();
   const dispatch = useDispatch();
-  const unFilteredPosts: postType[] = data.allMarkdownRemark.edges;
-  // const unFilteredPosts: postType[] = data.allMarkdownRemark.edges.concat(
-  //   data.allMarkdownRemark.edges,
-  //   data.allMarkdownRemark.edges,
-  //   data.allMarkdownRemark.edges,
-  //   data.allMarkdownRemark.edges,
-  //   data.allMarkdownRemark.edges,
-  //   data.allMarkdownRemark.edges,
-  //   data.allMarkdownRemark.edges,
-  //   data.allMarkdownRemark.edges,
-  //   data.allMarkdownRemark.edges,
-  //   data.allMarkdownRemark.edges,
-  //   data.allMarkdownRemark.edges,
-  // );
+  // const unFilteredPosts: postType[] = data.allMarkdownRemark.edges;
+  const unFilteredPosts: postType[] = data.allMarkdownRemark.edges.concat(
+    data.allMarkdownRemark.edges,
+    data.allMarkdownRemark.edges,
+    data.allMarkdownRemark.edges,
+    data.allMarkdownRemark.edges,
+    data.allMarkdownRemark.edges,
+    data.allMarkdownRemark.edges,
+    data.allMarkdownRemark.edges,
+    data.allMarkdownRemark.edges,
+    data.allMarkdownRemark.edges,
+    data.allMarkdownRemark.edges,
+    data.allMarkdownRemark.edges,
+    data.allMarkdownRemark.edges,
+    data.allMarkdownRemark.edges,
+    data.allMarkdownRemark.edges,
+    data.allMarkdownRemark.edges,
+    data.allMarkdownRemark.edges,
+    data.allMarkdownRemark.edges,
+    data.allMarkdownRemark.edges,
+    data.allMarkdownRemark.edges,
+    data.allMarkdownRemark.edges,
+    data.allMarkdownRemark.edges,
+    data.allMarkdownRemark.edges,
+    data.allMarkdownRemark.edges,
+    data.allMarkdownRemark.edges,
+    data.allMarkdownRemark.edges,
+    data.allMarkdownRemark.edges,
+    data.allMarkdownRemark.edges,
+    data.allMarkdownRemark.edges,
+  );
   const CategoryFilter = (postList: postType[]) => {
     return postList.filter(
       data =>
@@ -67,20 +84,25 @@ const IndexPage: React.FC<propTypes> = ({ data }) => {
     pagePostsCalc(filteredPosts, pageNumber),
   );
   useEffect(() => {
-    calcDisplayPosts();
+    combineCalcDisplayPostsProcess();
   }, [selectedCategory, searchWord, pageNumber]);
   useEffect(() => {
-    calcDisplayPosts();
+    dispatch({
+      type: 'UPDATE_ALL_POSTS',
+      value: unFilteredPosts,
+    });
+    combineCalcDisplayPostsProcess();
   }, []);
 
-  const calcDisplayPosts = () => {
+  const combineCalcDisplayPostsProcess = () => {
     const newFilteredPosts = CategoryFilter(SearchWordFilter(unFilteredPosts));
     const { minPageNumber, maxPageNumber } = pageBandCalc(pageNumber);
     setMinPage(minPageNumber);
+    setMaxPage(newFilteredPosts.length / 5);
     setMaxPage(maxPageFilter(newFilteredPosts.length, maxPageNumber));
     dispatch({
       type: 'UPDATE_TOTAL_PAGE_NUMBER',
-      value: maxPageNumber,
+      value: Math.ceil(newFilteredPosts.length / 5),
     });
     setFilteredPosts(CategoryFilter(SearchWordFilter(unFilteredPosts)));
     setDisplayPosts(pagePostsCalc(newFilteredPosts, pageNumber));
@@ -98,10 +120,6 @@ const IndexPage: React.FC<propTypes> = ({ data }) => {
     dispatch({
       type: 'UPDATE_POSTNUMBER',
       value: unFilteredPosts.length,
-    });
-    dispatch({
-      type: 'UPDATE_ALL_POSTS',
-      value: unFilteredPosts,
     });
   };
 

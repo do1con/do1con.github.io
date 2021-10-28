@@ -38,87 +38,50 @@ export type postType = {
   };
 };
 
+const emptyPost: postType = {
+  node: {
+    frontmatter: {
+      categories: [''],
+      date: '',
+      featuredImage: {
+        childImageSharp: {
+          gatsbyImageData: {
+            backgroundColor: '',
+            height: 0,
+            images: {
+              fallback: {
+                sizes: '',
+                src: '',
+                srcSet: '',
+              },
+              sources: [
+                {
+                  sizes: '',
+                  srcSet: '',
+                  type: '',
+                },
+              ],
+            },
+            layout: '',
+            width: 0,
+          },
+        },
+      },
+      slug: '',
+      summary: '',
+      thumbnail: '',
+      title: '',
+    },
+  },
+};
+
 const InitialState: stateType = {
   postNumber: 0,
   categories: [''],
   pageNumber: 1,
   totalPageNumber: 1,
-  allPosts: [
-    {
-      node: {
-        frontmatter: {
-          categories: [''],
-          date: '',
-          featuredImage: {
-            childImageSharp: {
-              gatsbyImageData: {
-                backgroundColor: '',
-                height: 0,
-                images: {
-                  fallback: {
-                    sizes: '',
-                    src: '',
-                    srcSet: '',
-                  },
-                  sources: [
-                    {
-                      sizes: '',
-                      srcSet: '',
-                      type: '',
-                    },
-                  ],
-                },
-                layout: '',
-                width: 0,
-              },
-            },
-          },
-          slug: '',
-          summary: '',
-          thumbnail: '',
-          title: '',
-        },
-      },
-    },
-  ],
-  shownPosts: [
-    {
-      node: {
-        frontmatter: {
-          categories: [''],
-          date: '',
-          featuredImage: {
-            childImageSharp: {
-              gatsbyImageData: {
-                backgroundColor: '',
-                height: 0,
-                images: {
-                  fallback: {
-                    sizes: '',
-                    src: '',
-                    srcSet: '',
-                  },
-                  sources: [
-                    {
-                      sizes: '',
-                      srcSet: '',
-                      type: '',
-                    },
-                  ],
-                },
-                layout: '',
-                width: 0,
-              },
-            },
-          },
-          slug: '',
-          summary: '',
-          thumbnail: '',
-          title: '',
-        },
-      },
-    },
-  ],
+  allPosts: [emptyPost],
+  shownPosts: [emptyPost],
 };
 
 export default InitialState;
