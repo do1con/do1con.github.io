@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from '@emotion/styled';
 import { useDispatch } from 'context/combineContext';
+import CategorySearchBar from './CategorySearchBar';
 
 type propTypes = {
   categories: string[];
@@ -16,6 +17,8 @@ const CategorySelector: React.FC<propTypes> = ({
   const dispatch = useDispatch();
   const [listHeight, setListHeight] = useState<number>(0);
   const [showEllipsis, setShowEllipsis] = useState<boolean>(false);
+  const [displayCategories, setDisplayCategories] =
+    useState<string[]>(categories);
   const CategoryListBox = useRef<HTMLUListElement>(null);
   useEffect(() => {
     window.addEventListener('resize', handleResize);
@@ -51,7 +54,7 @@ const CategorySelector: React.FC<propTypes> = ({
   const onClickEllipsis = () => {
     setShowEllipsis(!showEllipsis);
   };
-  const CategoryList: (JSX.Element | undefined)[] = categories.map(
+  const CategoryList: (JSX.Element | undefined)[] = displayCategories.map(
     (data: string, key: number) => {
       return (
         <CategoryItem
@@ -80,11 +83,17 @@ const CategorySelector: React.FC<propTypes> = ({
         </CategoryItem>
         {CategoryList}
       </ul>
-      {showEllipsis && (
-        <EllipsisButton onClick={onClickEllipsis}>
-          ...모든 카테고리 보기
-        </EllipsisButton>
-      )}
+      <div>
+        {showEllipsis && (
+          <EllipsisButton onClick={onClickEllipsis}>
+            ...모든 카테고리 보기
+          </EllipsisButton>
+        )}
+        <CategorySearchBar
+          categories={categories}
+          setDisplayCategories={setDisplayCategories}
+        />
+      </div>
     </div>
   );
 };

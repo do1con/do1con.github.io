@@ -47,9 +47,13 @@ const IndexPage: React.FC<propTypes> = ({ data }) => {
   const SearchWordFilter = (postList: postType[]) => {
     return postList.filter(
       data =>
-        data.node.frontmatter.title.indexOf(searchWord) >= 0 ||
+        data.node.frontmatter.title
+          .toUpperCase()
+          .indexOf(searchWord.toUpperCase()) >= 0 ||
         data.node.frontmatter.categories.indexOf(searchWord) >= 0 ||
-        data.node.frontmatter.summary.indexOf(searchWord) >= 0,
+        data.node.frontmatter.summary
+          .toUpperCase()
+          .indexOf(searchWord.toUpperCase()) >= 0,
     );
   };
   const [minPage, setMinPage] = useState<number>(1);
