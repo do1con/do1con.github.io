@@ -106,20 +106,23 @@ const IndexPage: React.FC<propTypes> = ({ data }) => {
   };
 
   return (
-    <>
-      <PostSearchBar searchWord={searchWord} setSearchWord={setSearchWord} />
-      <CategorySelector
-        categories={categories}
-        selectedCategory={selectedCategory}
-        setSelectedCategory={setSelectedCategory}
-      />
-      <PostList postList={displayPosts} selectedCategory={selectedCategory} />
-      <Pagination
-        minPage={minPage}
-        maxPage={maxPage}
-        currentPage={pageNumber}
-      />
-    </>
+    <div className="flex">
+      <div className="w-96 h-screen max-w-xs"></div>
+      <div>
+        <PostSearchBar searchWord={searchWord} setSearchWord={setSearchWord} />
+        <CategorySelector
+          categories={categories}
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+        />
+        <PostList postList={displayPosts} selectedCategory={selectedCategory} />
+        <Pagination
+          minPage={minPage}
+          maxPage={maxPage}
+          currentPage={pageNumber}
+        />
+      </div>
+    </div>
   );
 };
 
