@@ -17,8 +17,8 @@ const CategorySelector: React.FC<propTypes> = ({
   const dispatch = useDispatch();
   const [listHeight, setListHeight] = useState<number>(0);
   const [showEllipsis, setShowEllipsis] = useState<boolean>(false);
-  const [displayCategories, setDisplayCategories] =
-    useState<string[]>(categories);
+  // const [displayCategories, setDisplayCategories] =
+  //   useState<string[]>(categories);
   const CategoryListBox = useRef<HTMLUListElement>(null);
   useEffect(() => {
     window.addEventListener('resize', handleResize);
@@ -54,7 +54,7 @@ const CategorySelector: React.FC<propTypes> = ({
   const onClickEllipsis = () => {
     setShowEllipsis(!showEllipsis);
   };
-  const CategoryList: (JSX.Element | undefined)[] = displayCategories.map(
+  const CategoryList: (JSX.Element | undefined)[] = categories.map(
     (data: string, key: number) => {
       return (
         <CategoryItem
@@ -89,10 +89,10 @@ const CategorySelector: React.FC<propTypes> = ({
             ...모든 카테고리 보기
           </EllipsisButton>
         )}
-        <CategorySearchBar
+        {/* <CategorySearchBar
           categories={categories}
           setDisplayCategories={setDisplayCategories}
-        />
+        /> */}
       </div>
     </div>
   );
