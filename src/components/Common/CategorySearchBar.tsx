@@ -15,7 +15,6 @@ const CategorySearchBar: React.FC<propTypes> = ({
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
     setSearchCategoryKeyword(event.target.value);
-    console.log('검색어', event.target.value);
     const filteredCategories = categories.filter(
       data => data.toUpperCase().indexOf(event.target.value.toUpperCase()) >= 0,
     );
