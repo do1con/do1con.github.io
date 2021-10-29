@@ -1,26 +1,14 @@
 ---
-date: '2020-07-28'
-title: '첫번째 테스트용 글'
-categories:
-  [
-    'Web',
-    'SEO',
-    'Optimization',
-    'React',
-    '만약',
-    '고리가',
-    '나게 많고',
-    '무슨',
-    '그걸 테스트해보기 위해',
-    '말들을 써본다',
-  ]
+date: '2020-07-31'
+title: '세번째 테스트용 글'
+categories: ['Web', 'SEO', 'Optimization', 'Javascript']
 summary: '홈페이지를 운영하는 많은 사람들 또는 기업들이 검색 페이지 최상단에 보여지게 하기 위해 어떤 최적화 작업을 하는지 알아보자.'
 thumbnail: 'gatsby-astronaut'
 featuredImage: 'gatsby-astronaut.png'
-slug: 'post/1'
+slug: 'post/3'
 ---
 
-### 1. Help Google Bot to Find My Contents
+# 1. Help Google Bot to Find My Contents
 
 구글에 SiteMap을 제출하여 사이트에 있는 파일로서 새 페이지나 변경된 페이지가 있을 때 이를 검색 엔진에 알려주도록 할 수 있다.
 
@@ -39,3 +27,6 @@ Robots.txt 파일은 검색 엔진에 어떤 페이지를 크롤링해도 되는
 - SEO 기본 가이드
 
   [<https://support.google.com/webmasters/answer/7451184?hl=ko&ref_topic=9460495>](https://support.google.com/webmasters/answer/7451184?hl=ko&ref_topic=9460495)
+
+이미지 테스트!
+![image!!!](postsImages/gatsby-astronaut.png)
