@@ -125,7 +125,6 @@ const IndexPage: React.FC<propTypes> = ({ data }) => {
 
   return (
     <div className="flex">
-      <div className="w-96 h-screen max-w-xs"></div>
       <div>
         <PostSearchBar searchWord={searchWord} setSearchWord={setSearchWord} />
         <CategorySelector

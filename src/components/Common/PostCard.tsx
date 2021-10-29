@@ -17,7 +17,7 @@ const PostCard: React.FC<propTypes> = ({ postData }) => {
           <GatsbyImage
             image={imageInfo as IGatsbyImageData}
             alt="hi"
-            className="mr-4"
+            className="mr-4 z-10"
           />
           <div>
             <h2 className="font-extrabold text-xl block">

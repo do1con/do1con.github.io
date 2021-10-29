@@ -12,9 +12,9 @@ const Header: React.FC = function () {
     <header
       className={`MD:${
         headerOpened ? 'h-full' : 'h-16'
-      } LG:h-screen bg-green-500 fixed MD:relative LG:p-5 MD:p-4 MD:w-full w-96 MD:overflow-hidden`}
+      } LG:h-screen bg-green-500 fixed LG:p-5 MD:p-4 LG:w-56 MD:w-full MD:overflow-hidden z-50`}
     >
-      <div className="MD:absolute LG:object-none MD:overflow-visible LG:overflow-hidden w-0 h-0 top-14px left-14px z-50">
+      <div className="MD:absolute LG:object-none MD:overflow-visible LG:overflow-hidden w-0 h-0 top-14px left-14px">
         <button
           className="cursor-pointer"
           onClick={() => {
@@ -27,15 +27,16 @@ const Header: React.FC = function () {
       <h1 className="text-center font-extrabold">
         <Link
           to="/"
-          className="LG:text-2xl MD:text-lg text-white hover:text-white"
+          className="LG:text-xl MD:text-lg text-white hover:text-white"
         >
           Seongsoo's Blog
         </Link>
       </h1>
       <ProfileImage />
       <p className="text-white text-xs break-words text-center">
-        안녕하세요. 음악듣기를 좋아하는 주니어 개발자입니다. <br /> 웹개발을
-        공부하고 있습니다.
+        안녕하세요. <br />
+        음악과 독서를 좋아하는 주니어 개발자입니다. <br />
+        웹개발을 공부하고 있습니다.
       </p>
       <div className="my-8 flex justify-center w-full">
         <div className="mx-1">

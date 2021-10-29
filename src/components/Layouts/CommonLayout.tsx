@@ -19,7 +19,8 @@ const CommonLayout: React.FC<props> = ({ children }: props) => {
       <Container>
         <ContentWrapper>
           <Header />
-          <div className="p-12 mx-auto mt-6 w-full max-w-4xl">{children}</div>
+          <div className="MD:w-0 LG:w-56"></div>
+          <div className="p-18 mx-auto mt-6 w-full max-w-4xl">{children}</div>
         </ContentWrapper>
       </Container>
     </Provider>
