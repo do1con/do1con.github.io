@@ -64,7 +64,7 @@ const Pagination: React.FC<propTypes> = ({ minPage, maxPage, currentPage }) => {
     return pages;
   };
   return (
-    <div className="SM:w-4/5 LG:w-full text-center mx-auto">
+    <div className="SM:w-7/12 LG:w-full text-center mx-auto">
       <ol className="inline-flex flex-wrap mx-auto my-3">
         {currentPage > 1 && (
           <PageButton
