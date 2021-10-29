@@ -98,7 +98,6 @@ const IndexPage: React.FC<propTypes> = ({ data }) => {
     const newFilteredPosts = CategoryFilter(SearchWordFilter(unFilteredPosts));
     const { minPageNumber, maxPageNumber } = pageBandCalc(pageNumber);
     setMinPage(minPageNumber);
-    setMaxPage(newFilteredPosts.length / 5);
     setMaxPage(maxPageFilter(newFilteredPosts.length, maxPageNumber));
     dispatch({
       type: 'UPDATE_TOTAL_PAGE_NUMBER',

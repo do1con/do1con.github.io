@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { useContext, useDispatch } from 'context/combineContext';
 import { pageBandCalc, maxPageFilter } from 'lib/paginationCalculator';
+import LeftArrow from 'images/arrow-left.svg';
+import RightArrow from 'images/arrow-right.svg';
+import LeftArrowEnd from 'images/arrow-left-end.svg';
+import RightArrowEnd from 'images/arrow-right-end.svg';
 
 type propTypes = {
   minPage: number;
@@ -51,6 +55,7 @@ const Pagination: React.FC<propTypes> = ({ minPage, maxPage, currentPage }) => {
           selected={currentPage === i}
           onClick={onClickPageNumber}
           key={i}
+          className="text-sm MD:m-1 LG:m-3 leading-none"
         >
           {i}
         </PageButton>,
@@ -60,26 +65,42 @@ const Pagination: React.FC<propTypes> = ({ minPage, maxPage, currentPage }) => {
   };
   return (
     <div className="w-full text-center">
-      <ol className="inline-flex mx-auto my-3">
+      <ol className="inline-flex flex-wrap mx-auto my-3">
         {currentPage > 1 && (
-          <PageButton selected={false} onClick={onClickFirst}>
-            처음
+          <PageButton
+            className="text-sm MD:m-1 LG:m-3"
+            selected={false}
+            onClick={onClickFirst}
+          >
+            <LeftArrowEnd width=".75rem" height=".75rem" />
           </PageButton>
         )}
         {currentPage > 1 && (
-          <PageButton selected={false} onClick={onClickBefore}>
-            이전
+          <PageButton
+            className="text-sm MD:m-1 LG:m-3"
+            selected={false}
+            onClick={onClickBefore}
+          >
+            <LeftArrow width=".75rem" height=".75rem" />
           </PageButton>
         )}
         {displayPages()}
         {currentPage <= maxPage && (
-          <PageButton selected={false} onClick={onClickNext}>
-            다음
+          <PageButton
+            className="text-sm MD:m-1 LG:m-3"
+            selected={false}
+            onClick={onClickNext}
+          >
+            <RightArrow width=".75rem" height=".75rem" />
           </PageButton>
         )}
         {totalPageNumber > maxPage && (
-          <PageButton selected={false} onClick={onClickLast}>
-            끝
+          <PageButton
+            className="text-sm MD:m-1 LG:m-3"
+            selected={false}
+            onClick={onClickLast}
+          >
+            <RightArrowEnd width=".75rem" height=".75rem" />
           </PageButton>
         )}
       </ol>
@@ -88,10 +109,10 @@ const Pagination: React.FC<propTypes> = ({ minPage, maxPage, currentPage }) => {
 };
 
 const PageButton = styled.li<{ selected: boolean }>`
-  margin: 0 0.75rem;
   cursor: pointer;
   color: ${props => (props.selected ? '#242a33' : '#757d85')};
   font-weight: ${props => (props.selected ? 'bold' : 'normal')};
+  line-height: 12px;
 `;
 
 export default Pagination;
