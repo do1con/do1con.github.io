@@ -12,7 +12,7 @@ export default function Template({
   const { markdownRemark } = data; // data.markdownRemark holds your post data
   const { frontmatter, html } = markdownRemark;
   return (
-    <>
+    <div className="mx-auto">
       <h2 className="font-extrabold text-3xl block my-3">
         {frontmatter.title}
       </h2>
@@ -22,13 +22,13 @@ export default function Template({
       <div className="blog-post-container mb-4">
         <div className="blog-post">
           <div
-            className="blog-post-content prose"
+            className="blog-post-content prose max-w-full p-2"
             dangerouslySetInnerHTML={{ __html: html }}
           />
         </div>
       </div>
       <Utterances repo="do1con/kss_blog" />
-    </>
+    </div>
   );
 }
 export const pageQuery = graphql`
