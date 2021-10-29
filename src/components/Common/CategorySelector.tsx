@@ -61,6 +61,7 @@ const CategorySelector: React.FC<propTypes> = ({
           selected={data === selectedCategory}
           key={key}
           onClick={onClickCategoryItem}
+          className="MD:text-xs LG:text-sm"
         >
           #{data}
         </CategoryItem>
@@ -71,13 +72,14 @@ const CategorySelector: React.FC<propTypes> = ({
     <div className="mt-4 mb-t">
       <ul
         className={`flex flex-wrap justify-items-center overflow-hidden ${
-          showEllipsis ? 'max-h-20' : 'max-h-full'
+          showEllipsis ? 'MD:max-h-14 LG:max-h-20' : 'max-h-full'
         }`}
         ref={CategoryListBox}
       >
         <CategoryItem
           selected={selectedCategory === 'All'}
           onClick={onClickCategoryItem}
+          className="MD:text-xs LG:text-sm"
         >
           #All
         </CategoryItem>
@@ -85,7 +87,10 @@ const CategorySelector: React.FC<propTypes> = ({
       </ul>
       <div>
         {showEllipsis && (
-          <EllipsisButton onClick={onClickEllipsis}>
+          <EllipsisButton
+            onClick={onClickEllipsis}
+            className="MD:text-xs LG:text-sm"
+          >
             ...모든 카테고리 보기
           </EllipsisButton>
         )}
