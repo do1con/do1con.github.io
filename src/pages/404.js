@@ -1,15 +1,55 @@
-import * as React from 'react';
+import React, { FunctionComponent } from 'react';
+import styled from '@emotion/styled';
+import { Link } from 'gatsby';
 
-// import Layout from "../components/layout"
-// import Seo from "../components/seo"
+const NotFoundPageWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+`;
 
-const NotFoundPage = () => (
-  // <Layout>
-  //   <Seo title="404: Not found" />
-  //   <h1>404: Not Found</h1>
-  //   <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-  // </Layout>
-  <div>404 error</div>
-);
+const NotFoundText = styled.div`
+  font-size: 75px;
+  font-weight: 800;
+
+  @media (max-width: 768px) {
+    font-size: 100px;
+  }
+`;
+
+const NotFoundDescription = styled.div`
+  font-size: 17px;
+  text-align: center;
+  line-height: 1.3;
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+  }
+`;
+
+const GoToMainButton = styled(Link)`
+  margin-top: 30px;
+  font-size: 14px;
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+const NotFoundPage = function () {
+  return (
+    <NotFoundPageWrapper>
+      <NotFoundText>404</NotFoundText>
+      <NotFoundDescription>
+        찾을 수 없는 페이지입니다. <br />
+        다른 콘텐츠를 보러 가보시겠어요?
+      </NotFoundDescription>
+      <GoToMainButton to="/">메인으로</GoToMainButton>
+    </NotFoundPageWrapper>
+  );
+};
 
 export default NotFoundPage;
