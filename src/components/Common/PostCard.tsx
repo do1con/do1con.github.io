@@ -14,11 +14,13 @@ const PostCard: React.FC<propTypes> = ({ postData }) => {
     <div>
       <Link to={frontmatter.slug}>
         <div className="flex w-full my-8">
-          <GatsbyImage
-            image={imageInfo as IGatsbyImageData}
-            alt={`${frontmatter.title} 썸네일`}
-            className="mr-4 z-10 SM:hidden"
-          />
+          <div className="SM:hidden overflow-hidden">
+            <GatsbyImage
+              image={imageInfo as IGatsbyImageData}
+              alt={`${frontmatter.title} 썸네일`}
+              className="mr-4 z-10"
+            />
+          </div>
           <div>
             <h2 className="font-extrabold SM:text-md LG:text-xl block">
               {frontmatter.title}
