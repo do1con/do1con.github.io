@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from '@emotion/styled';
-import { useDispatch } from 'context/combineContext';
+import { useDispatch, useContext } from 'context/combineContext';
 import CategorySearchBar from './CategorySearchBar';
 
 type propTypes = {
@@ -15,33 +15,6 @@ const CategorySelector: React.FC<propTypes> = ({
   setSelectedCategory,
 }) => {
   const dispatch = useDispatch();
-  const [listHeight, setListHeight] = useState<number>(0);
-  const [showEllipsis, setShowEllipsis] = useState<boolean>(false);
-  // const [displayCategories, setDisplayCategories] =
-  //   useState<string[]>(categories);
-  const CategoryListBox = useRef<HTMLUListElement>(null);
-  useEffect(() => {
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-  useEffect(() => {
-    handleResize();
-  }, [categories]);
-  useEffect(() => {
-    if (listHeight >= 48) {
-      setShowEllipsis(true);
-    } else {
-      setShowEllipsis(false);
-    }
-  }, [listHeight]);
-  const handleResize = () => {
-    if (CategoryListBox.current) {
-      setListHeight(CategoryListBox.current.clientHeight);
-      if (CategoryListBox.current.clientHeight >= 48) setShowEllipsis(true);
-    }
-  };
   const onClickCategoryItem = (event: React.MouseEvent<HTMLLIElement>) => {
     const target = event.target as HTMLElement;
     const categoryName: string = target.innerHTML.replace('#', '');
@@ -50,9 +23,6 @@ const CategorySelector: React.FC<propTypes> = ({
       type: 'UPDATE_PAGE_NUMBER',
       value: 1,
     });
-  };
-  const onClickEllipsis = () => {
-    setShowEllipsis(!showEllipsis);
   };
   const CategoryList: (JSX.Element | undefined)[] = categories.map(
     (data: string, key: number) => {
@@ -70,12 +40,7 @@ const CategorySelector: React.FC<propTypes> = ({
   );
   return (
     <div className="mt-4 mb-t">
-      <ul
-        className={`flex flex-wrap justify-items-center overflow-hidden ${
-          showEllipsis ? 'MD:max-h-14 LG:max-h-20' : 'max-h-full'
-        }`}
-        ref={CategoryListBox}
-      >
+      <ul className="flex flex-wrap justify-items-center overflow-hidden max-h-full">
         <CategoryItem
           selected={selectedCategory === 'All'}
           onClick={onClickCategoryItem}
@@ -85,20 +50,7 @@ const CategorySelector: React.FC<propTypes> = ({
         </CategoryItem>
         {CategoryList}
       </ul>
-      <div>
-        {showEllipsis && (
-          <EllipsisButton
-            onClick={onClickEllipsis}
-            className="MD:text-xs LG:text-sm"
-          >
-            ...모든 카테고리 보기
-          </EllipsisButton>
-        )}
-        {/* <CategorySearchBar
-          categories={categories}
-          setDisplayCategories={setDisplayCategories}
-        /> */}
-      </div>
+      <div></div>
     </div>
   );
 };
