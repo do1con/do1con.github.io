@@ -29,6 +29,7 @@
     "gatsby-transformer-remark": "^4.11.0",
     "gatsby-transformer-remark-frontmatter": "^1.1.0",
     "gatsby-transformer-sharp": "^3.13.0",
+    "gh-pages": "^3.2.3",
     "prismjs": "^1.25.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
@@ -62,7 +63,8 @@
     "start": "gatsby develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "deploy": "gatsby build && gh-pages -d public -b gh-pages"
   },
   "repository": {
     "type": "git",

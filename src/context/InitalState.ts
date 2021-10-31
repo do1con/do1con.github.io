@@ -1,6 +1,7 @@
 export type stateType = {
   postNumber: number; // 게시글 수
   categories: string[]; // 게시글 카테고리 리스트
+  categoryEllipsis: boolean;
   pageNumber: number; // 현재 페이지 넘버
   totalPageNumber: number; // 최대 페이지 넘버
   allPosts: postType[]; // 모든 게시글 정보
@@ -78,6 +79,7 @@ const emptyPost: postType = {
 const InitialState: stateType = {
   postNumber: 0,
   categories: [''],
+  categoryEllipsis: true,
   pageNumber: 1,
   totalPageNumber: 1,
   allPosts: [emptyPost],

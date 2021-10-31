@@ -4,6 +4,7 @@ import InitialState, { stateType, postType } from 'context/InitalState';
 type ActionType =
   | { type: 'UPDATE_POSTNUMBER'; value: number }
   | { type: 'UPDATE_CATEGORIES'; value: string[] }
+  | { type: 'UPDATE_CATEGORY_ELLIPSIS'; value: boolean }
   | { type: 'UPDATE_PAGE_NUMBER'; value: number }
   | { type: 'UPDATE_TOTAL_PAGE_NUMBER'; value: number }
   | { type: 'UPDATE_ALL_POSTS'; value: postType[] }
@@ -25,6 +26,11 @@ export const Reducer = (
       return {
         ...state,
         categories: [...action.value],
+      };
+    case 'UPDATE_CATEGORY_ELLIPSIS':
+      return {
+        ...state,
+        categoryEllipsis: action.value,
       };
     case 'UPDATE_PAGE_NUMBER':
       return {

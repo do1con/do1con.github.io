@@ -5,7 +5,6 @@ import GithubIcon from 'images/github.svg';
 import MailIcon from 'images/mail.svg';
 import Hamburger from 'images/Hamburger.svg';
 
-// sm:max-w-full md:max-w-72 lg:max-w-xs
 const Header: React.FC = function () {
   const [headerOpened, setHeaderOpened] = useState<boolean>(false);
   return (
@@ -29,7 +28,7 @@ const Header: React.FC = function () {
           to="/"
           className="LG:text-xl MD:text-lg text-white hover:text-white"
         >
-          Seongsoo's Blog
+          Ksss Blog
         </Link>
       </h1>
       <ProfileImage />

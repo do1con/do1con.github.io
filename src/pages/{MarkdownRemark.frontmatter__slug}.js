@@ -85,7 +85,7 @@ export default function Template({
           </Link>
         )}
       </div>
-      <Utterances repo="do1con/kss_blog" />
+      <Utterances repo="do1con/kss.github.io" />
     </div>
   );
 }
