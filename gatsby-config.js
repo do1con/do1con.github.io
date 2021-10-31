@@ -1,9 +1,10 @@
 module.exports = {
   siteMetadata: {
-    title: `Kss's Blog`,
-    description: `Passing by...`,
-    author: `@do1con`,
-    siteUrl: `https://www`,
+    title: `Ksss Blog`,
+    description: `My Blog`,
+    author: `@do1con <kss7547@gmail.com>`,
+    siteUrl: `https://do1con.github.io`,
+    image: `/static/favicon.png`,
   },
   plugins: [
     {
@@ -53,5 +54,17 @@ module.exports = {
       },
     },
     `gatsby-plugin-image`,
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `ksss Blog`,
+        short_name: `Ksss Blog`,
+        start_url: `/`,
+        background_color: `#ffffff`,
+        theme_color: `#48bb78`,
+        display: `standalone`,
+        icon: `src/images/favicon.png`,
+      },
+    },
   ],
 };

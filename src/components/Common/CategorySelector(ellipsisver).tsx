@@ -19,12 +19,6 @@ const CategorySelector: React.FC<propTypes> = ({
   const [listHeight, setListHeight] = useState<number>(0);
   const CategoryListBox = useRef<HTMLUListElement>(null);
   useEffect(() => {
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-  useEffect(() => {
     console.log('상태', categoryEllipsis);
   });
   useEffect(() => {

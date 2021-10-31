@@ -85,7 +85,7 @@ const Pagination: React.FC<propTypes> = ({ minPage, maxPage, currentPage }) => {
           </PageButton>
         )}
         {displayPages()}
-        {currentPage <= maxPage && (
+        {currentPage < maxPage && (
           <PageButton
             className="text-sm MD:m-1 LG:m-3"
             selected={false}
