@@ -68,5 +68,6 @@ yarn-error.log
 # Yarn Integrity file
 .yarn-integrity
 
-#구글 아날리틱스 측정 ID 보안을 위해 추적 중지
-/gatsby-config.js
+# dotenv
+.env.development
+.env.production

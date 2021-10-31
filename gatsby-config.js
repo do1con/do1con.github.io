@@ -1,3 +1,7 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
   siteMetadata: {
     title: `Ksss Blog`,
@@ -8,6 +12,14 @@ module.exports = {
     image: `/favicon.png`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-gtag`,
+      options: {
+        trackingId: process.env.GOOGLE_KEY, // 측정 ID
+        head: false, // head에 tracking script를 넣고 싶다면 true로
+        anonymize: true,
+      },
+    },
     {
       resolve: 'gatsby-plugin-typescript',
       options: {
