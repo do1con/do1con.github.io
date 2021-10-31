@@ -1,11 +1,11 @@
 module.exports = {
   siteMetadata: {
     title: `Ksss Blog`,
-    titleTemplate: `Ksss Blog - `,
-    description: `My Blog`,
-    author: `@do1con <kss7547@gmail.com>`,
+    titleTemplate: `%s | Ksss Blog`,
+    description: `do1con의 개발 블로그입니다.`,
+    author: `do1con kss7547@gmail.com`,
     siteUrl: `https://do1con.github.io`,
-    image: `/static/favicon.png`,
+    image: `/favicon.png`,
   },
   plugins: [
     {
