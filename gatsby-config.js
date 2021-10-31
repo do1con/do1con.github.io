@@ -20,6 +20,15 @@ module.exports = {
         anonymize: true,
       },
     },
+    `gatsby-plugin-sitemap`,
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://do1con.github.io/',
+        sitemap: 'https://do1con.github.io/sitemap/sitemap-index.xml',
+        policy: [{ userAgent: '*', allow: '/' }],
+      },
+    },
     {
       resolve: 'gatsby-plugin-typescript',
       options: {
