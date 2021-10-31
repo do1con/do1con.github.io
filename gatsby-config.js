@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Ksss Blog`,
+    titleTemplate: `Ksss Blog - `,
     description: `My Blog`,
     author: `@do1con <kss7547@gmail.com>`,
     siteUrl: `https://do1con.github.io`,

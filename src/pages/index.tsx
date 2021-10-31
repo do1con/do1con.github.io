@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useContext, useDispatch } from 'context/combineContext';
 import { graphql } from 'gatsby';
 import { postType } from 'context/InitalState';
+import Helmet from 'components/Layouts/Helmet';
 import PostList from 'components/Common/PostList';
 import CategorySelector from 'components/Common/CategorySelector';
 import PostSearchBar from 'components/Common/PostSearchBar';
@@ -124,6 +125,7 @@ const IndexPage: React.FC<propTypes> = ({ data }) => {
 
   return (
     <div className="flex">
+      <Helmet meta={[]} title="홈" description="do1con의 블로그 입니다." />
       <div>
         <PostSearchBar searchWord={searchWord} setSearchWord={setSearchWord} />
         <CategorySelector

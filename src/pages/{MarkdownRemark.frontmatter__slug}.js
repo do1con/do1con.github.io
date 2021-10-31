@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { graphql } from 'gatsby';
 import { Link } from 'gatsby';
+import Helmet from 'components/Layouts/Helmet';
 import Utterances from 'components/Common/Utterances';
 import '../styles/base.min.css';
 import '../styles/components.min.css';
@@ -47,6 +48,16 @@ export default function Template({
   };
   return (
     <div className="mx-auto">
+      <Helmet
+        meta={[]}
+        title={frontmatter.title}
+        description={frontmatter.summary}
+        categories={frontmatter.categories}
+        image={
+          frontmatter.featuredImage.childImageSharp.gatsbyImageData.images
+            .fallback.src
+        }
+      />
       <h2 className="font-extrabold text-3xl block my-3">
         {frontmatter.title}
       </h2>
@@ -89,6 +100,8 @@ export default function Template({
     </div>
   );
 }
+
+// frontmatter.featuredImage.childImageSharp.gatsbyImageData
 export const pageQuery = graphql`
   query ($id: String!) {
     markdownRemark(id: { eq: $id }) {
@@ -97,6 +110,13 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         slug
         title
+        summary
+        categories
+        featuredImage {
+          childImageSharp {
+            gatsbyImageData(width: 110, height: 110)
+          }
+        }
       }
     }
     allMarkdownRemark(
@@ -107,6 +127,7 @@ export const pageQuery = graphql`
           id
           frontmatter {
             slug
+            categories
           }
         }
       }
