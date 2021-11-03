@@ -11,4 +11,4 @@
 
 ## Link
 
-[Seongsoo's Blog Link](https://seongsoo.github.io/)
+[ksss Blog Link](https://do1con.github.io/)
