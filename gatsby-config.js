@@ -16,7 +16,7 @@ module.exports = {
       resolve: `gatsby-plugin-gtag`,
       options: {
         trackingId: process.env.GOOGLE_KEY, // 측정 ID
-        head: false, // head에 tracking script를 넣고 싶다면 true로
+        head: true, // head에 tracking script를 넣고 싶다면 true로
         anonymize: true,
       },
     },

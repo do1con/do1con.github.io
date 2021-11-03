@@ -74,6 +74,10 @@ const Helmet: React.FC<propTypes> = ({
         <meta name="twitter:description" content={seo.description} />
       )}
       {seo.image && <meta name="twitter:image" content={seo.image} />}
+      <meta
+        name="google-site-verification"
+        content={`${process.env.SEARCH_COMSOLE_KEY}`}
+      />
     </ReactHelmet>
   );
 };

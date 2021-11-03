@@ -125,7 +125,7 @@ const IndexPage: React.FC<propTypes> = ({ data }) => {
 
   return (
     <div className="flex">
-      <Helmet meta={[]} title="홈" description="do1con의 블로그 입니다." />
+      <Helmet title="홈" description="do1con의 블로그 입니다." />
       <div>
         <PostSearchBar searchWord={searchWord} setSearchWord={setSearchWord} />
         <CategorySelector
