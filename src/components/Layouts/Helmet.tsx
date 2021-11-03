@@ -76,7 +76,11 @@ const Helmet: React.FC<propTypes> = ({
       {seo.image && <meta name="twitter:image" content={seo.image} />}
       <meta
         name="google-site-verification"
-        content={`${process.env.SEARCH_COMSOLE_KEY}`}
+        content={`${process.env.GOOGLE_SITE_VERIFICATION_KEY}`}
+      />
+      <meta
+        name="naver-site-verification"
+        content={`${process.env.NAVER_SITE_VERIFICATION_KEY}`}
       />
     </ReactHelmet>
   );
