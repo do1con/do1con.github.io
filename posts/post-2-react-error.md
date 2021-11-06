@@ -12,7 +12,7 @@ slug: 'post/2'
 
 > Error: Maximum update depth exceeded. This can happen when a component repeatedly calls setState inside componentWillUpdate or componentDidUpdate. React limits the number of nested updates to prevent infinite loops.
 
-리액트를 처음 접했을 때 접한 에러입니다. 과거 블로그에도 이 에러에 대해 포스팅 했었는데, 압도적인 조회수를 보여주어서 (누적 조회수 약 5000 이상...)특히 기억에 남습니다.
+리액트를 처음 접했을 때 접한 에러입니다.
 
 이 포스트는 해당 에러의 해결법, 발생 원인을 정리한 글입니다.
 
