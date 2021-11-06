@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[do1con blog RSS]]></title><description><![CDATA[do1con의 개발 블로그입니다.]]></description><link>https://do1con.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 06 Nov 2021 10:28:19 GMT</lastBuildDate><item><title><![CDATA[Javascript - 쓰로틀링(throttling)]]></title><description><![CDATA[…]]></description><link>https://do1con.github.io/post-3-throttling/</link><guid isPermaLink="false">https://do1con.github.io/post-3-throttling/</guid><pubDate>Fri, 01 Nov 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;과거에 작성된 글입니다.&lt;/p&gt;
+&lt;h2&gt;쓰로틀링이란 무엇인가?&lt;/h2&gt;
+&lt;p&gt;쓰로틀링은 주로 이벤트 등에 사용되는 프로그래밍 기법입니다.&lt;/p&gt;
+&lt;p&gt;흔히 스크롤 액션 같은 이벤트에 사용됩니다.&lt;/p&gt;
+&lt;h2&gt;쓰로틀링의 작동 방식&lt;/h2&gt;
+&lt;p&gt;쓰로틀링의 정의를 간단하게 짚고 넘어가겠습니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;함수가 호출된 후 일정 시간동안 함수가 다시 호출되지 않도록 막는 것.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;여기서 &lt;strong&gt;일정 시간&lt;/strong&gt;동안 함수 호출을 막는다는 것이 핵심입니다.&lt;/p&gt;
+&lt;p&gt;아래와 같은 scroll 이벤트를 봅시다.
+box가 scroll 될 때마다 display 속성이 none~block으로 토글되는 이벤트입니다.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;let targetState = true;
+
+function eventScroll() {
+  const target = document.querySelector(&apos;.box&apos;);
+  targetState = !targetState;
+  if (targetState) {
+    target.style.display = &apos;block&apos;;
+  } else {
+    target.style.display = &apos;none&apos;;
+  }
+  console.log(&apos;scroll!!&apos;);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;img src=&quot;/ca7f3fefff89c25f80261ba93d853a51/post-3-1.gif&quot; alt=&quot;show_toggle_event&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;scroll 이벤트가 쉬지 않고 발생한다.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;클라이언트 입장에서는 충분히 스크롤을 마구 굴릴 수 있습니다. 이렇게 되면 정성스럽게 짜놓은 이벤트 함수가 고장날 수도 있습니다. (특히 복잡하다면)&lt;/p&gt;
+&lt;p&gt;그래서 이런 이벤트에 필요한 기법이 쓰로틀링입니다. 쓰로틀링이란 event 함수를 일정 주기동안 제한하는 기법이라 앞서 언급했습니다.&lt;/p&gt;
+&lt;p&gt;위와 같은 상황에선, 스크롤 이벤트가 발생한 후 일정시간동안 scroll이벤트가 다시 발생하지 않도록 제한하는 것이 되겠죠.&lt;/p&gt;
+&lt;p&gt;위 코드에 쓰로틀링을 추가해보겠습니다.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;let targetState = true;
+let timer;
+
+function eventScroll() {
+  if (!timer) {
+    timer = setTimeout(() =&gt; {
+      const target = document.querySelector(&apos;.box&apos;);
+      targetState = !targetState;
+      if (targetState) {
+        target.style.display = &apos;block&apos;;
+      } else {
+        target.style.display = &apos;none&apos;;
+      }
+      console.log(&apos;scroll!!&apos;);
+      timer = null;
+    }, 1000);
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;img src=&quot;/b44d05a099cf229e8f54a00305e23640/post-3-2.gif&quot; alt=&quot;show_toggle_event2&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;이벤트가 1초에 한 번씩만 작동하고 있다.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;setTimeout 함수를 이용하는 방법입니다. 이벤트가 발생할 때마다 timer에는 수행할 로직이 지정되고, 모든 일을 마친 후 스스로 초기화 합니다. 이 과정에 setTimeout함수가 끼어들어 1000ms라는 딜레이를 부여합니다.&lt;/p&gt;
+&lt;p&gt;저는 1000ms로 지정했지만, 딜레이 간격은 얼마든지 수정할 수 있습니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[React - Error:Maximum update depth... 해결법]]></title><description><![CDATA[과거에 작성된 글입니다. Error: Maximum update depth exceeded. This can happen when a component repeatedly calls setState inside componentWillUpdate or…]]></description><link>https://do1con.github.io/post-2-react-error/</link><guid isPermaLink="false">https://do1con.github.io/post-2-react-error/</guid><pubDate>Tue, 29 Oct 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;과거에 작성된 글입니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Error: Maximum update depth exceeded. This can happen when a component repeatedly calls setState inside componentWillUpdate or componentDidUpdate. React limits the number of nested updates to prevent infinite loops.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;리액트를 처음 접했을 때 접한 에러입니다.&lt;/p&gt;
+&lt;p&gt;이 포스트는 해당 에러의 해결법, 발생 원인을 정리한 글입니다.&lt;/p&gt;
+&lt;p&gt;이 에러는 onClick과 같은 이벤트에 함수를 잘못 지정할 경우 발생합니다.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;#x3C;button onClick=&quot;{handleOnClickButton()}&quot;&gt;버튼&amp;#x3C;/button&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;이렇게 작성할 경우 에러가 발생합니다.
+다시한번 에러 메시지를 봅시다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Maximum update depth exceeded. (최대 업데이트 깊이를 초과했습니다.)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;즉, 컴포넌트가 계속해서 업데이트를 할 것이며, 그 깊이가 무한대에 가깝다는 의미입니다.&lt;/p&gt;
+&lt;p&gt;왜 이런일이 발생할까요?&lt;/p&gt;
+&lt;p&gt;다시 코드를 봅시다.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;#x3C;button onClick=&quot;{handleOnClickButton()}&quot;&gt;버튼&amp;#x3C;/button&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;onClick 이벤트 발생시 handleOnclickButton 함수를 **&lt;em&gt;실행&lt;/em&gt;**하도록 코드가 작성되어있습니다.&lt;/p&gt;
+&lt;p&gt;정말 그럴까요?&lt;/p&gt;
+&lt;p&gt;이 코드는 &lt;strong&gt;onClick 이벤트 발생 시 해당 함수를 실행하는게 아닌, 렌더시 해당 함수를 실행시키는 코드&lt;/strong&gt;입니다.&lt;/p&gt;
+&lt;p&gt;즉, 컴포넌트를 렌더하며 함수를 실행 &gt; 함수를 실행 했기때문에 다시 렌더 &gt; 렌더 중 함수 실행문을 만나 다시 함수 실행 &gt; on and on...&lt;/p&gt;
+&lt;p&gt;이렇게 무한 루프에 빠지게 됩니다.&lt;/p&gt;
+&lt;p&gt;이벤트에 함수를 지정하고 싶으실 땐 아래와 같이 작성해주셔야 합니다.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;#x3C;button onClick=&quot;{handleOnClickButton}&quot;&gt;버튼&amp;#x3C;/button&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;매개변수를 지정해줘야 할경우는 아래와 같습니다.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;#x3C;button onClick={() =&gt; handleOnClickButton(...param)}&gt;버튼&amp;#x3C;/button&gt;
+&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title><![CDATA[Javascript - 호이스팅]]></title><description><![CDATA[과거 호이스팅에 대해 공부한 후 정리한 글입니다. 아래의 코드는 어떻게 작동할까요? 일반적인 경우 hey는 if문의 {}영역에서 선언되었으므로 그 밖의 영역에 있는 console.log…]]></description><link>https://do1con.github.io/post-1-hoisting/</link><guid isPermaLink="false">https://do1con.github.io/post-1-hoisting/</guid><pubDate>Mon, 07 Oct 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;과거 호이스팅에 대해 공부한 후 정리한 글입니다.&lt;/p&gt;
+&lt;h3&gt;아래의 코드는 어떻게 작동할까요?&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;if (true) {
+  var hey = &apos;hello&apos;;
+}
+
+console.log(hey);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;일반적인 경우 hey는 if문의 {}영역에서 선언되었으므로 그 밖의 영역에 있는 console.log에서는 호출될 수 없어야 합니다.&lt;/p&gt;
+&lt;p&gt;그러나 자바스크립트는 그렇지 않습다. hey변수가 호이스팅 되었기 때문입니다.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;var hey;
+
+if (true) {
+  hey = &apos;hello&apos;;
+}
+
+console.log(hey);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;호이스팅은 선언과 할당이 분리되는 현상입니다.&lt;/p&gt;
+&lt;p&gt;var로 선언된 변수는 function block의 최상단으로 선언이 옮겨집니다.&lt;/p&gt;
+&lt;h2&gt;function block의 최상단?&lt;/h2&gt;
+&lt;p&gt;var는 function scope라는 특성을 지니고 있습니다.
+즉 var의 영역은 function이며 함수 최상단에 선언된다는 의미입니다.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;function hi() {
+  if (true) {
+    var say = &apos;hi&apos;;
+  }
+  console.log(say);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;이 코드에서 var say는 function hi에 속해있습니다. 그러므로 런타임에서는&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;function hi() {
+  var say; //선언
+  if (true) {
+    say = &apos;hi&apos;; // 할당
+  }
+  console.log(say);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;이렇게 변경되어 실행됩니다.&lt;/p&gt;
+&lt;p&gt;이는 var 변수가 어떤 방식으로 선언되던 상관없이 적용됩니다.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;function bye() {
+  for (var i = 0; i &amp;#x3C; 10; i++) {
+    // blah blah
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;이렇게 반복문에 선언된 변수도 마찬가지 입니다.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;function bye() {
+  var i; // 선언
+  for (i = 0; i &amp;#x3C; 10; i++) {
+    // 할당
+    // blah blah
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;함수표현식과 호이스팅&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;hi();
+
+var hi = function () {
+  console.log(&apos;hi&apos;);
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;이렇게 함수 표현식으로 선언하더라도 호이스팅이 적용됩니다.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;var hi;
+
+hi(); // error! hi 함수에는 아직 함수표현식이 할당되지 않았음
+
+hi = function () {
+  console.log(&apos;hi&apos;);
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;대안은 없을까?&lt;/h2&gt;
+&lt;p&gt;호이스팅은 javascript를 유연하게 실행되도록 돕지만, 동시에 기존에 다른 프로그래밍 언어를 공부한 개발자에겐 헷갈리는 요소가 될 수 있습니다.&lt;/p&gt;
+&lt;p&gt;때문에, 통상적인 블록스코프를 따르는 변수모델로 let, const가 제시되었습니다.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;function hi() {
+  if (true) {
+    const say = &apos;hi&apos;;
+  }
+  console.log(say); // error!
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;let과 const는 전형적인 block scope를 가졌기 때문에 if문 밖에서 호출될 경우 에러를 발생시킵니다.&lt;/p&gt;
+&lt;h2&gt;함수와 호이스팅&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;hi();
+
+function hi() {
+  console.log(&apos;hi&apos;);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;자바스크립트에서는 이런 코드도 실행됩니다. 분명 호출이 선언보다 앞섰는데도 말이죠.&lt;/p&gt;
+&lt;p&gt;이런 일이 가능한 이유는 함수도 호이스팅에 적용되기 때문입니다. 함수 선언문은 반드시 최상단으로 끌어 올려집니다.
+위 코드는 런타임에선 다음과 같이 실행됩니다.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;function hi() {
+  console.log(&apos;hi&apos;);
+}
+
+hi();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;함수와 var변수의 호이스팅 우선순위는?&lt;/h2&gt;
+&lt;p&gt;간단하게, 변수 호이스팅이 함수 호이스팅보다 먼저 일어납니다.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;hi();
+
+function hi() {
+  var hiMessage = &apos;hi&apos;;
+  console.log(message);
+}
+
+console.log(byeMessage);
+
+var byeMessage = &apos;bye&apos;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;그러므로 이 코드는 런타임에서&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;var byeMessage;
+function hi() {
+  var hiMessage;
+  hiMessage = &apos;hi&apos;; // 선언과 할당은 분리된다.
+  console.log(message); // hi.
+}
+
+hi();
+
+byeMessage = &apos;bye&apos;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;이렇게 해석됩니다.&lt;/p&gt;</content:encoded></item></channel></rss>
