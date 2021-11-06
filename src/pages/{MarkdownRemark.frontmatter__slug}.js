@@ -49,12 +49,11 @@ export default function Template({
   return (
     <div className="mx-auto">
       <Helmet
-        meta={[]}
         title={frontmatter.title}
         description={frontmatter.summary}
         categories={frontmatter.categories}
         image={
-          frontmatter.featuredImage.childImageSharp.gatsbyImageData.images
+          frontmatter.featuredImage.childImageSharp.gatsbyImageData?.images
             .fallback.src
         }
       />
@@ -101,7 +100,6 @@ export default function Template({
   );
 }
 
-// frontmatter.featuredImage.childImageSharp.gatsbyImageData
 export const pageQuery = graphql`
   query ($id: String!) {
     markdownRemark(id: { eq: $id }) {

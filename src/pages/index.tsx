@@ -21,40 +21,10 @@ interface propTypes {
   };
 }
 
-const IndexPage: React.FC<propTypes> = ({ data }) => {
+const IndexPage: React.FC<propTypes> = ({ data }: propTypes) => {
   const { categories, pageNumber } = useContext();
   const dispatch = useDispatch();
   const unFilteredPosts: postType[] = data.allMarkdownRemark.edges;
-  // const unFilteredPosts: postType[] = data.allMarkdownRemark.edges.concat(
-  //   data.allMarkdownRemark.edges,
-  //   data.allMarkdownRemark.edges,
-  //   data.allMarkdownRemark.edges,
-  //   data.allMarkdownRemark.edges,
-  //   data.allMarkdownRemark.edges,
-  //   data.allMarkdownRemark.edges,
-  //   data.allMarkdownRemark.edges,
-  //   data.allMarkdownRemark.edges,
-  //   data.allMarkdownRemark.edges,
-  //   data.allMarkdownRemark.edges,
-  //   data.allMarkdownRemark.edges,
-  //   data.allMarkdownRemark.edges,
-  //   data.allMarkdownRemark.edges,
-  //   data.allMarkdownRemark.edges,
-  //   data.allMarkdownRemark.edges,
-  //   data.allMarkdownRemark.edges,
-  //   data.allMarkdownRemark.edges,
-  //   data.allMarkdownRemark.edges,
-  //   data.allMarkdownRemark.edges,
-  //   data.allMarkdownRemark.edges,
-  //   data.allMarkdownRemark.edges,
-  //   data.allMarkdownRemark.edges,
-  //   data.allMarkdownRemark.edges,
-  //   data.allMarkdownRemark.edges,
-  //   data.allMarkdownRemark.edges,
-  //   data.allMarkdownRemark.edges,
-  //   data.allMarkdownRemark.edges,
-  //   data.allMarkdownRemark.edges,
-  // );
   const CategoryFilter = (postList: postType[]) => {
     return postList.filter(
       data =>

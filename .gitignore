@@ -71,3 +71,6 @@ yarn-error.log
 # dotenv
 .env.development
 .env.production
+
+# my ignores
+backupPosts/
