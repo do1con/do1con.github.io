@@ -133,7 +133,7 @@ export const pageQuery = graphql`
             slug
             featuredImage {
               childImageSharp {
-                gatsbyImageData(width: 110, height: 110)
+                gatsbyImageData(width: 110, height: 110, placeholder: BLURRED)
               }
             }
           }
