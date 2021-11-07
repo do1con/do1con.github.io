@@ -1,4 +1,169 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[do1con blog RSS]]></title><description><![CDATA[do1con의 개발 블로그입니다.]]></description><link>https://do1con.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 06 Nov 2021 10:28:19 GMT</lastBuildDate><item><title><![CDATA[Javascript - 쓰로틀링(throttling)]]></title><description><![CDATA[…]]></description><link>https://do1con.github.io/post-3-throttling/</link><guid isPermaLink="false">https://do1con.github.io/post-3-throttling/</guid><pubDate>Fri, 01 Nov 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;과거에 작성된 글입니다.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[do1con blog RSS]]></title><description><![CDATA[do1con의 개발 블로그입니다.]]></description><link>https://do1con.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 07 Nov 2021 00:50:50 GMT</lastBuildDate><item><title><![CDATA[Big-O 표기법 (Big-O Notation)]]></title><description><![CDATA[Big-O 표기법이란? 점근 표기법(asymptotic notation…]]></description><link>https://do1con.github.io/post-4-big-o-notation/</link><guid isPermaLink="false">https://do1con.github.io/post-4-big-o-notation/</guid><pubDate>Sun, 02 May 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;Big-O 표기법이란?&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;점근 표기법&lt;/strong&gt;(asymptotic notation)&lt;/p&gt;
+&lt;p&gt;점근 표기법은 어떤 함수의 증가 양상을 다른 함수와의 비교로 표현하는 수론과 해석학의 방법입니다. **알고리즘의 복잡도를 단순화(도식화)**할 때나 무한급수의 뒷부분을 간소화할 때 쓰입니다. &lt;a href=&quot;https://ko.wikipedia.org/wiki/%EC%A0%90%EA%B7%BC_%ED%91%9C%EA%B8%B0%EB%B2%95&quot;&gt;(위키백과)&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;em&gt;Big O 표기법&lt;/em&gt; 은 대표적인 점근 표기법중 하나로 어떠한 알고리즘이 &lt;strong&gt;최악&lt;/strong&gt;의 경우를 기준으로 어느정도의 효율성을 보일 것인가를 예측하는 표기법입니다. 어떤 알고리즘을 f(n)이라 하고, 이를 Big-O 표기법으로 표현하면 O(f(n))으로 표현됩니다.&lt;/p&gt;
+&lt;h3&gt;Big-O 복잡도&lt;/h3&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 800px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/1644335aaa8832500767fc4dac43ca78/11a8f/post-4-big-o.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 86.49999999999999%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAARCAIAAABSJhvpAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB+ElEQVQ4y3WT7bKaMBCGvf+b6h+np9MO2joc7QH0WAREISQkkA+SbDoKAtppZicD2Tz77u5sFqdTQinDmBBSj1ZV+HzO8/ySZVmapteiqGs6ejEmlLI0yxZVVTnnAMDNltb6IxjWZrO5XK/zO/1HXdMFQqj/BxhORYna/GKUmse7ewez9uYhpB5gSqm1tr/HjnHxc6OFeAR9SmpUJvUDDoJAKdX7DOcSk0HuFZvCTXAYhiOsCBVF+W8j/qv8BNdUlGiuPAbBjfq80FZ2Q80YY8bYbrfrum4Gl4MEDKTsbIp4SWVatU9w0zTb3XaCCZEYj+lZgJKKDLeyM69pY0ziOPZ9X2vd+5oktXoI1EidIE74A3uBy1uGEARTzSw5OwBt7Rm3OeHGaue4NbW1tTVEyVTJ3AEn45CMsGaM559U4jNKmzZ3DoGpwDIHrQMOhmmZKZkAtBP8EQRctM6xPFhF8bFkGJwGd9M3YA2AAdebstZOad9hP9ykbOf//uFv31NRIVVd+PXCr1cx7L0VothWWyzw0O17zc77/sVbfkuCk+6UErJTndXGGqs7rZVWQt2MS6PNS8Nuyqfj0V//ik9/oig6HA7r9frr29tyuVytPM/zoija7/dhGI6vaOo2AAyv4jFJTdMihMoSNU2jVDcfTGOM1hoAMMZ/ASjYzttl2MGBAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Big_O_Notation&quot;
+        title=&quot;Big_O_Notation&quot;
+        src=&quot;/static/1644335aaa8832500767fc4dac43ca78/5a190/post-4-big-o.png&quot;
+        srcset=&quot;/static/1644335aaa8832500767fc4dac43ca78/772e8/post-4-big-o.png 200w,
+/static/1644335aaa8832500767fc4dac43ca78/e17e5/post-4-big-o.png 400w,
+/static/1644335aaa8832500767fc4dac43ca78/5a190/post-4-big-o.png 800w,
+/static/1644335aaa8832500767fc4dac43ca78/c1b63/post-4-big-o.png 1200w,
+/static/1644335aaa8832500767fc4dac43ca78/11a8f/post-4-big-o.png 1272w&quot;
+        sizes=&quot;(max-width: 800px) 100vw, 800px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Big O 로 정의하는 복잡성에는 두가지가 존재합니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;시간 복잡도&lt;/li&gt;
+&lt;li&gt;공간 복잡도&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;시간 복잡도는 대부분의 경우 어떤 알고리즘이 &lt;strong&gt;최악&lt;/strong&gt;의 경우 실행 시간이 어떻게 분포될지를 나타냅니다. 하지만 실행 시간 그 자체를 계산하는 것이 아니라, &lt;strong&gt;연산이 몇 번 이루어지는 가&lt;/strong&gt;를 계산합니다. 거의 대부분의 경우 실행 시간과 비례합니다.&lt;/p&gt;
+&lt;p&gt;공간 복잡도는 프로그램을 실행시킨 후 그 프로그램이 종료될 때 까지 필요로 하는 자원 공간을 계산합니다. 즉 &lt;strong&gt;메모리 효율&lt;/strong&gt;을 계산하는 것이라 생각하면 편합니다.&lt;/p&gt;
+&lt;p&gt;이 글에서는 비교적 자주 쓰이는 시간 복잡도에 대해서만 서술했습니다.&lt;/p&gt;
+&lt;p&gt;O(1) ⇒ O(n) ⇒ O(n²) ⇒ O(log n) 순서로 예시를 작성했습니다.&lt;/p&gt;
+&lt;h2&gt;일반적인 예시&lt;/h2&gt;
+&lt;h3&gt;O(1)&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;function example1(n) {
+  return n + n;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;em&gt;example1&lt;/em&gt; 은 입력이 1개이며 n의 값에 무관하게 한 번의 연산만 진행합니다. 상수 시간이라고 합니다.&lt;/p&gt;
+&lt;h3&gt;O(n)&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;function example2(n) {
+  for (let i = 0; i &amp;#x3C; n; i++) {
+    console.log(i);
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;em&gt;example2&lt;/em&gt; 는 입력 n번만큼 반복하여 연산합니다. 선형 시간, 혹은 직선적 시간이라고 합니다.&lt;/p&gt;
+&lt;h3&gt;O(n²)&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;function example3(n) {
+  for (let i = 0; i &amp;#x3C; n; i++) {
+    console.log(i);
+    for (let j = 0; j &amp;#x3C; n; j++) {
+      console.log(j);
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;em&gt;example3&lt;/em&gt; 는 입력 n의 제곱만큼 연산합니다. 2차 시간이라고 합니다.&lt;/p&gt;
+&lt;h3&gt;&lt;em&gt;번외&lt;/em&gt; : O(n³)&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;function example4(n) {
+  for (let i = 0; i &amp;#x3C; n; i++) {
+    console.log(i);
+    for (let j = 0; j &amp;#x3C; n; j++) {
+      console.log(j);
+      for (let k = 0; k &amp;#x3C; n; k++) {
+        console.log(k);
+      }
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;em&gt;example4&lt;/em&gt; 는 O(n³), 3차 시간 복잡도의 예&lt;/p&gt;
+&lt;h3&gt;O(log n)&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;function example5(n) {
+  for (let i = 0; i &amp;#x3C; n; i * 2) {
+    console.log(i);
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;em&gt;example5&lt;/em&gt; 는 2의 2승(2²)부터 n승까지의 항목을 출력하는 함수입니다. Big-O 표기법은 &lt;strong&gt;최악&lt;/strong&gt;의 경우를 기준으로 한다는 점을 상기해보면, n 입력 값이 천만이라 가정해도 log₂(10,000,000)은 23.253... 이기 때문에 23번만 값을 출력합니다.&lt;/p&gt;
+&lt;h2&gt;Big-O 표기법 규칙&lt;/h2&gt;
+&lt;p&gt;개발할 때 위와같은 간단한 반복문만 사용하지는 않습니다. Big-O 표기법에는 더 복잡한 구조의 알고리즘의 시간 복잡도를 계산할 수 있도록 돕는 규칙이 있습니다. 여러가지 규칙이 있지만 이글에선 자주 사용되는 4가지 법칙만 살펴보겠습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;계수 법칙&lt;/strong&gt; : 상수 제거하기&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;합의 법칙&lt;/strong&gt; : 빅오 더하기&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;곱의 법칙&lt;/strong&gt; : 빅오 곱하기&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;다항 법칙&lt;/strong&gt; : 빅오의 k승&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;계수 법칙 &lt;em&gt;상수 제거하기&lt;/em&gt;&lt;/h3&gt;
+&lt;p&gt;Big-O 표기법에선 &lt;strong&gt;입력 크기와 연관되지 않은 상수를 무시&lt;/strong&gt;합니다.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;function example6(n) {
+  let count = 0;
+  for (let i = 0; i &amp;#x3C; n; i++) {
+    count += i;
+  }
+  count *= 100; // 1번 지점
+  count /= 100; // 2번 지점
+  return count;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;em&gt;example6&lt;/em&gt; 는 n번만큼 반복한 후 추가로 곱하기(*) 연산과 나누기(/) 연산을 합니다. 여기서 마지막 두번의 연산(1,2번 지점)이 위에서 언급한 &lt;em&gt;상수&lt;/em&gt; 가 됩니다. 1, 2번 지점의 코드가 없다면 &lt;em&gt;example6&lt;/em&gt; 는 &lt;em&gt;f(n) = n&lt;/em&gt; 으로 표현할 수 있습니다. 1, 2번 지점의 코드를 포함한다면 &lt;em&gt;example6&lt;/em&gt; 는 &lt;em&gt;f(n) = n + 2&lt;/em&gt; 로 표현됩니다. 하지만 계수 법칙에 따라 상수를 제거(혹은 제외)함으로 Big-O 표기법으로 표현하면 O(n)이 됩니다.&lt;/p&gt;
+&lt;p&gt;이 법칙은 곱셈에서도 유효합니다.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;function example7(n) {
+  let count = 0;
+  for( let i = 0; &amp;#x3C; n * 10; i++ ) {
+    count += i;
+  }
+  return count;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;em&gt;example7&lt;/em&gt; 은 n * 10번 반복하여 연산합니다. 10배라면 꽤 큰 숫자로 보입니다. 하지만 Big-O 표기법은 &lt;strong&gt;최악&lt;/strong&gt;의 경우를 기준으로 한다는 점을 기억해야 합니다. n을 무한대 또는 아주 큰 수라고 생각하면 10배로 연산한다고 해서 크게 달라지는 점은 없습니다. Big-O 표기법은 n(입력값)에 비례하여 알고리즘이 어느정도의 효율성을 보이느냐를 따지는 지표이므로 이와같은 상수는 큰 영향을 주지 못합니다.&lt;/p&gt;
+&lt;h3&gt;합의 법칙 &lt;em&gt;빅오 더하기&lt;/em&gt;&lt;/h3&gt;
+&lt;p&gt;합의 법칙은 &lt;strong&gt;시간 복잡도를 더할 수 있다&lt;/strong&gt;는 것입니다. 두개 이상의 여러 알고리즘을 보유한 상위의 알고리즘이 있고, 이 알고리즘을 Big-O 표기법으로 표현하고 싶을 경우가 있습니다. 합의 법칙은 이런 경우에 적용할 수 있습니다.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;function example8(n) {
+  for (let i = 0; i &amp;#x3C; n; i++) {
+    // 1번 지점
+    console.log(i);
+  }
+  for (let j = 0; j &amp;#x3C; n * 2; j++) {
+    // 2번 지점
+    console.log(j);
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;1번 지점은 n번만큼 반복하여 &lt;em&gt;f(n) = n&lt;/em&gt; 입니다. 2번 지점은 n * 2번 반복하여 &lt;em&gt;f(n) = 2n&lt;/em&gt; 입니다. 이를 합하게 되면 &lt;em&gt;f(n) = 6n&lt;/em&gt; 이 됩니다. 이제 여기에 계수 법칙을 적용하게 되면 &lt;em&gt;O(n) = n&lt;/em&gt; 으로 표현할 수 있습니다.&lt;/p&gt;
+&lt;h3&gt;곱의 법칙 &lt;em&gt;빅오 곱하기&lt;/em&gt;&lt;/h3&gt;
+&lt;p&gt;곱의 법칙은 합의 법칙과 마찬가지로 &lt;strong&gt;시간 복잡도를 곱할 수 있다&lt;/strong&gt;는 것입니다.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;function example9(n) {
+  let count = 0;
+  for (let i = 0; i &amp;#x3C; n; i++) {
+    ++count;
+    for (let j = 0; j &amp;#x3C; 2 * n; j++) {
+      ++count;
+    }
+  }
+  return count;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;em&gt;example9&lt;/em&gt; 함수는 &lt;em&gt;f(n) = n * 2n&lt;/em&gt; 입니다. 수식에 따라 시간 복잡도를 곱하게 되면 &lt;em&gt;f(n) = 2n²&lt;/em&gt; 가 되고, 여기에 계수 법칙을 적용하면 최종적으로 &lt;em&gt;O(n) = n²&lt;/em&gt; 로 표현할 수 있습니다.&lt;/p&gt;
+&lt;h3&gt;다항 법칙 &lt;em&gt;빅오의 k승&lt;/em&gt;&lt;/h3&gt;
+&lt;p&gt;다항 법칙은 곱의 법칙과 비슷한 맥락으로 이해할 수 있습니다. 시간 복잡도가 여러개의 항(다항)을 가지고 있을 때 동일한 다항 차수를 지닌 빅오 표기법을 지님을 나타냅니다.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;function example10(n) {
+  let count = 0;
+  for (let i = 0; i &amp;#x3C; n * n; i++) {
+    ++count;
+  }
+  return count;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;em&gt;example10&lt;/em&gt; 함수에서 &lt;em&gt;f(n) = n * n = n²&lt;/em&gt; 입니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Javascript - 쓰로틀링(throttling)]]></title><description><![CDATA[…]]></description><link>https://do1con.github.io/post-3-throttling/</link><guid isPermaLink="false">https://do1con.github.io/post-3-throttling/</guid><pubDate>Fri, 01 Nov 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;과거에 작성된 글입니다.&lt;/p&gt;
 &lt;h2&gt;쓰로틀링이란 무엇인가?&lt;/h2&gt;
 &lt;p&gt;쓰로틀링은 주로 이벤트 등에 사용되는 프로그래밍 기법입니다.&lt;/p&gt;
 &lt;p&gt;흔히 스크롤 액션 같은 이벤트에 사용됩니다.&lt;/p&gt;
