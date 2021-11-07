@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import styled from '@emotion/styled';
 import { useContext, useDispatch } from 'context/combineContext';
 import { graphql } from 'gatsby';
 import { postType } from 'context/InitalState';
@@ -94,9 +95,9 @@ const IndexPage: React.FC<propTypes> = ({ data }: propTypes) => {
   };
 
   return (
-    <div className="flex">
+    <PageWrapper className="flex for-test">
       <Helmet title="홈" description="do1con의 블로그 입니다." />
-      <div>
+      <div className="w-full">
         <PostSearchBar searchWord={searchWord} setSearchWord={setSearchWord} />
         <CategorySelector
           categories={categories}
@@ -110,7 +111,7 @@ const IndexPage: React.FC<propTypes> = ({ data }: propTypes) => {
           currentPage={pageNumber}
         />
       </div>
-    </div>
+    </PageWrapper>
   );
 };
 
@@ -141,4 +142,8 @@ export const pageQuery = graphql`
       }
     }
   }
+`;
+
+const PageWrapper = styled.div`
+  width: 100%;
 `;

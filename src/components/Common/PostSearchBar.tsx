@@ -16,8 +16,8 @@ const PostSearchBar: React.FC<propTypes> = ({ searchWord, setSearchWord }) => {
     setSearchWord(event.target.value);
   };
   return (
-    <div className="flex w-full justify-items-center">
-      <div className="flex w-full max-w-xs mx-auto">
+    <div className="flex w-full justify-items-center mx-auto">
+      <div className="flex max-w-xs mx-auto">
         <input
           type="text"
           placeholder="게시글 검색"
