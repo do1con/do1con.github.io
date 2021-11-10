@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://do1con.github.io/sitemap/sitemap-index.xml
+Sitemap: https://do1con.github.io/sitemap-pages.xml
 Host: https://do1con.github.io
