@@ -78,12 +78,11 @@ module.exports = {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
         host: 'https://do1con.github.io/',
-        sitemap: 'https://do1con.github.io/sitemap/sitemap-index.xml',
+        sitemap: 'https://do1con.github.io/sitemap-pages.xml',
         policy: [
           {
             userAgent: '*',
             allow: '/',
-            sitemap: 'https://do1con.github.io/sitemap-pages.xml',
           },
         ],
       },
