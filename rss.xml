@@ -1,4 +1,62 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[do1con blog RSS]]></title><description><![CDATA[do1con의 개발 블로그입니다.]]></description><link>https://do1con.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 08 Nov 2021 09:12:52 GMT</lastBuildDate><item><title><![CDATA[Java로 알고리즘문제를 풀때, Scanner 대신 BufferedReader를 사용해보자]]></title><description><![CDATA[블로그의 형태를 어느정도 잡아둔 후, 저는 예정대로 백준에서 알고리즘 문제를 풀기로 했습니다. 개발자가 되고싶다는 사람이 알고리즘을 소홀히 했다는 죄책감도 있고, 요즘은 코딩테스트가 필수이기도 하니까요. 저는 그나마 배운적 있는 언어인 C와 Java…]]></description><link>https://do1con.github.io/post-5-scanner_vs_buffered_reader/</link><guid isPermaLink="false">https://do1con.github.io/post-5-scanner_vs_buffered_reader/</guid><pubDate>Mon, 08 Nov 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;블로그의 형태를 어느정도 잡아둔 후, 저는 예정대로 &lt;a href=&quot;https://www.acmicpc.net/&quot;&gt;백준&lt;/a&gt;에서 알고리즘 문제를 풀기로 했습니다. 개발자가 되고싶다는 사람이 알고리즘을 소홀히 했다는 죄책감도 있고, 요즘은 코딩테스트가 필수이기도 하니까요.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[do1con blog RSS]]></title><description><![CDATA[do1con의 개발 블로그입니다.]]></description><link>https://do1con.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 10 Nov 2021 11:49:47 GMT</lastBuildDate><item><title><![CDATA[Java - BufferedReader 사용법, Scanner와의 차이]]></title><description><![CDATA[알고리즘 문제를 풀때 BufferedReader와 BufferedWriter를 어떻게 활용할 수 있는지 정리한 글입니다. 본론에 앞서, BufferedReader와 BufferedWriter…]]></description><link>https://do1con.github.io/post-6-buffered_reader_buffered_writer/</link><guid isPermaLink="false">https://do1con.github.io/post-6-buffered_reader_buffered_writer/</guid><pubDate>Wed, 10 Nov 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;strong&gt;알고리즘 문제를 풀때&lt;/strong&gt; BufferedReader와 BufferedWriter를 어떻게 활용할 수 있는지 정리한 글입니다.&lt;/p&gt;
+&lt;p&gt;본론에 앞서, BufferedReader와 BufferedWriter가 왜 빠른지에 대해서 언급을 하는게 순서상 옳지만, 관련 내용은 &lt;strong&gt;아주&lt;/strong&gt;간단하게만 짚고 넘어가겠습니다.&lt;/p&gt;
+&lt;p&gt;이것을 자세히 설명하려면 자바가 문자열을 어떻게 다루는지(문자열 인코딩을 어떻게 처리하는가)에 대한 내용이 필요한데, 글을 따로 써야할 정도로 내용이 길기도 하고 저도 그걸 설명할 만큼 자바에 대한 지식이 충분하지 않기 때문이기도 합니다. (즉 잘 모른다는 소리입니다 ^^;)&lt;/p&gt;
+&lt;h2&gt;Scanner와 BufferedReader의 차이&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Scanner: 사용자가 입력한 데이터를 토큰단위로 자른 후 특정 형태로 &apos;&lt;strong&gt;parse&apos;&lt;/strong&gt;&apos;합니다.&lt;/li&gt;
+&lt;li&gt;BufferedReader: 사용자가 입력한 데이터를 String형태 그대로 (개행 전까지)덩어리째 사용합니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Scanner는 자바책에서 가장 먼저 알려주는 입력 객체인 만큼, 사용법이 간단합니다.
+입력한 대로 토큰을 자르고, 원하는 형태로 parse시켜줍니다. (int, double 등등) 데이터를 그때 그때 읽어들이는데, space, enter를 경계로 인식합니다. 자체적인 예외처리과정이 있습니다.&lt;/p&gt;
+&lt;p&gt;그에 반해 BufferedReader는 토큰형태로 자르지 않고, 버퍼에 데이터가 가득 차거나 개행되기 전까지 입력을 계속 받습니다. 그리고 그 덩어리 째로(String) 데이터를 사용하게 됩니다. 예외처리를 직접 작성해야합니다. (IOException)&lt;/p&gt;
+&lt;p&gt;Scanner와 BufferedReader 둘 다 버퍼를 사용합니다. 심지어 버퍼의 크기는 BufferedReader가 훨씬 큽니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Scanner: 1KB, BufferdReader: 8KB&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;하지만 Scanner는 &apos;그때 그때&apos; 계속해서 토큰단위로 잘라서 데이터를 처리하고, BufferdReader는 버퍼에 모아서 한번에 처리한다는 차이가 있습니다. &apos;작은 일을 여러번 하기&apos;냐 &apos;모아서 한번에 처리하기&apos;냐의 차이로 볼 수도 있을 것 같습니다.&lt;/p&gt;
+&lt;p&gt;Scanner는 데이터를 자르고, 특정 형태로 파싱하느라 바쁜데 BufferedReader는 모았다가 아무것도 하지 않고 그대로 전달해주니까요.&lt;/p&gt;
+&lt;p&gt;처리하는 데이터가 작은 경우엔 큰 차이가 없을 수 있다고 합니다. 하지만 보통은 BufferedReader가 빠르다는게 정론이라고 합니다.&lt;/p&gt;
+&lt;h2&gt;BufferedReader 사용법&lt;/h2&gt;
+&lt;p&gt;BufferdReader에 대한 모든 것은 &lt;a href=&quot;https://docs.oracle.com/javase/8/docs/api/java/io/BufferedReader.html&quot;&gt;이곳&lt;/a&gt;에서 확인하실 수 있습니다.&lt;/p&gt;
+&lt;p&gt;이 글에선 자주 사용하는 메소드, 사용법만 살펴보겠습니다.&lt;/p&gt;
+&lt;p&gt;BufferedReader를 사용할 땐 보통 InputStreamReader를 사용합니다.
+InputStreamReader는 byte stream을 character stream으로 변경해줍니다.
+InputStreamReader를 통해 한 글자 한 글자 BufferedReader가 버퍼에 쌓아간다고 생각해도 될 것같습니다.&lt;/p&gt;
+&lt;p&gt;BufferedReader의 리더에는 꼭 InputStreamReader가 쓰일 필요는 없다곤 합니다만 보통은 InputStreamReader를 사용합니다.&lt;/p&gt;
+&lt;h2&gt;String을 쪼개기 위한 StringTokenizer 활용&lt;/h2&gt;
+&lt;p&gt;BufferedReader는 &lt;strong&gt;무조건 한 줄씩&lt;/strong&gt;읽는 다는 것을 기억해야합니다.
+때문에 내용물을 어떻게 가공할지에 대해선 저희가 코드로 작성해주어야 합니다.
+이에 자주 사용하는 방법인 StringTokenizer의 활용 예제를 적어보겠습니다. (사실 &lt;a href=&quot;post/post-5&quot;&gt;저번 글&lt;/a&gt;에 적은 코드와 거의 같습니다.)&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class Main {
+
+	public static void main(String[] args) throws IOException {
+    // BufferedReader를 사용할땐 throws IOException를 해주거나 try/catch로 감싸줘야 함.
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		int a = Integer.parseInt(st.nextToken());
+
+		System.out.println(a);
+
+    br.close();
+
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;이코드에서 중요한 요소는 세가지입니다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;예외처리를 반드시 해주어야 한다.(throws IOException / try catch)&lt;/li&gt;
+&lt;li&gt;형 변환은 직접 처리해준다.&lt;/li&gt;
+&lt;li&gt;입력 작업이 끝난 후 close()를 통해 입력 스트림을 닫아준다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;이 세가지 중요한 점만 유념한다면, BufferedReader를 사용해보며 이것저것 실험해보기에도 문제는 없을 듯 합니다.&lt;/p&gt;
+&lt;p&gt;다음 Java에 대한 글은 BufferedWriter가 될 것 같습니다.&lt;/p&gt;
+&lt;p&gt;지적, 조언은 감사하게 받고 있습니다. 잘못된 점이 있다면 댓글로 남겨주세요.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Java로 알고리즘문제를 풀때, Scanner 대신 BufferedReader를 사용해보자]]></title><description><![CDATA[블로그의 형태를 어느정도 잡아둔 후, 저는 예정대로 백준에서 알고리즘 문제를 풀기로 했습니다. 개발자가 되고싶다는 사람이 알고리즘을 소홀히 했다는 죄책감도 있고, 요즘은 코딩테스트가 필수이기도 하니까요. 저는 그나마 배운적 있는 언어인 C와 Java…]]></description><link>https://do1con.github.io/post-5-scanner_vs_buffered_reader/</link><guid isPermaLink="false">https://do1con.github.io/post-5-scanner_vs_buffered_reader/</guid><pubDate>Mon, 08 Nov 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;블로그의 형태를 어느정도 잡아둔 후, 저는 예정대로 &lt;a href=&quot;https://www.acmicpc.net/&quot;&gt;백준&lt;/a&gt;에서 알고리즘 문제를 풀기로 했습니다. 개발자가 되고싶다는 사람이 알고리즘을 소홀히 했다는 죄책감도 있고, 요즘은 코딩테스트가 필수이기도 하니까요.&lt;/p&gt;
 &lt;p&gt;저는 그나마 배운적 있는 언어인 C와 Java중 Java를 선택했습니다. 그리고 호기롭게 &apos;단계별로 풀어보기&apos;에 도전했죠.&lt;/p&gt;
 &lt;p&gt;&apos;단계별&apos;이라는 말에 걸맞게 처음 마주한 문제들은 수월히 풀어나갔습니다. 문법을 제대로 이해했는지를 묻는 문제가 다수였습니다.&lt;/p&gt;
 &lt;p&gt;그렇게 몇 문제를 풀어나가던 도중, 저는 뭔가 이상함을 느꼈습니다.&lt;/p&gt;
@@ -9,7 +67,7 @@
 &lt;p&gt;&lt;img src=&quot;/b1e6d1c827ffd98feb7e4c56854652b2/post-5-2.png&quot; alt=&quot;나의_답&quot;&gt;
 &lt;em&gt;제가 제출한 답&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;다른 문제들도 마찬가지였습니다.
-메모리와 시간에서 2배에서 10배정도 까지 차이가 났습니다.&lt;/p&gt;
+메모리와 시간에서 2배에서 3배정도까지 차이가 났습니다.&lt;/p&gt;
 &lt;p&gt;저는 어떤차이가 있는지 궁금해서 결국 다른분들의 답안을 확인해봤습니다.&lt;/p&gt;
 &lt;h2&gt;아무도 Scanner를 사용하지 않는다.&lt;/h2&gt;
 &lt;p&gt;상위권에 계신 많은분들의 답을 확인해본 결과, 눈에 띄는 큰 차이가 있었습니다. 그것은 아무도 Scanner나 System.out.print~를 사용하지 않는다는 것이었습니다.&lt;/p&gt;
