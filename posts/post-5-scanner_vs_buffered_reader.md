@@ -3,7 +3,6 @@ date: '2021-11-08'
 title: 'Java로 알고리즘문제를 풀때, Scanner 대신 BufferedReader를 사용해보자'
 categories: ['Algorithm', 'Java']
 summary: '상위권에 계신 많은분들의 답을 확인해본 결과, 눈에 띄는 큰 차이가 있었습니다. 그것은 아무도 Scanner나 System.out.print~를 사용하지 않는다는 것이었습니다. 그 대신 BufferedReader, InputStreamReader를 import하는 코드가 압도적으로 많았습니다.'
-thumbnail: 'postsImages/post-5/post-5-1.PNG'
 featuredImage: 'postsImages/post-5/post-5-1.PNG'
 slug: 'post/5'
 ---
@@ -27,7 +26,7 @@ _다른 분들의 답_
 _제가 제출한 답_
 
 다른 문제들도 마찬가지였습니다.
-메모리와 시간에서 2배에서 10배정도 까지 차이가 났습니다.
+메모리와 시간에서 2배에서 3배정도까지 차이가 났습니다.
 
 저는 어떤차이가 있는지 궁금해서 결국 다른분들의 답안을 확인해봤습니다.
 
