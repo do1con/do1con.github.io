@@ -29,7 +29,7 @@ const IndexPage: React.FC<propTypes> = ({ data }: propTypes) => {
   const CategoryFilter = (postList: postType[]) => {
     return postList.filter(
       data =>
-        data.node.frontmatter.categories.indexOf(selectedCategory) >= 0 ||
+        data.node.frontmatter.categories?.indexOf(selectedCategory) >= 0 ||
         selectedCategory === 'All',
     );
   };
@@ -93,7 +93,6 @@ const IndexPage: React.FC<propTypes> = ({ data }: propTypes) => {
       value: unFilteredPosts.length,
     });
   };
-
   return (
     <PageWrapper className="flex for-test">
       <Helmet title="홈" description="do1con의 블로그 입니다." />
@@ -130,7 +129,6 @@ export const pageQuery = graphql`
             summary
             date(formatString: "YYYY.MM.DD.")
             categories
-            thumbnail
             slug
             featuredImage {
               childImageSharp {

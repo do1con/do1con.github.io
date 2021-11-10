@@ -27,7 +27,7 @@ export default function Template({
   const checkPrevPageExist = (currentPageNumber, allPosts) => {
     const result = allPosts.edges.filter(data => {
       const pageNumber = Number(
-        data.node.frontmatter.slug.substring(
+        data.node.frontmatter.slug?.substring(
           data.node.frontmatter.slug.indexOf('/') + 1,
         ),
       );
@@ -38,7 +38,7 @@ export default function Template({
   const checkNextPageExist = (currentPageNumber, allPosts) => {
     const result = allPosts.edges.filter(data => {
       const pageNumber = Number(
-        data.node.frontmatter.slug.substring(
+        data.node.frontmatter.slug?.substring(
           data.node.frontmatter.slug.indexOf('/') + 1,
         ),
       );

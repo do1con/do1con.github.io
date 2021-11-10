@@ -10,7 +10,7 @@ interface propTypes {
 
 const PostCard: React.FC<propTypes> = ({ postData }) => {
   const { frontmatter } = postData.node;
-  const imageInfo = frontmatter.featuredImage.childImageSharp.gatsbyImageData;
+  const imageInfo = frontmatter.featuredImage?.childImageSharp.gatsbyImageData;
   return (
     <div>
       <Link to={frontmatter.slug}>
