@@ -79,7 +79,13 @@ module.exports = {
       options: {
         host: 'https://do1con.github.io/',
         sitemap: 'https://do1con.github.io/sitemap/sitemap-index.xml',
-        policy: [{ userAgent: '*', allow: '/' }],
+        policy: [
+          {
+            userAgent: '*',
+            allow: '/',
+            sitemap: 'https://do1con.github.io/sitemap-pages.xml',
+          },
+        ],
       },
     },
     {
