@@ -3,8 +3,8 @@ date: '2019-10-29'
 title: 'React - Error:Maximum update depth... 해결법'
 categories: ['React']
 summary: '리액트를 공부하다보면 한 번쯤은 마주하는 에러. Maximum update depth exceeded... 왜 발생하는 걸까?'
-thumbnail: 'react'
-featuredImage: 'react.png'
+thumbnail: 'postsImages/react.png'
+featuredImage: 'postsImages/react.png'
 slug: 'post/2'
 ---
 

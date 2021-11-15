@@ -3,8 +3,8 @@ date: '2019-10-07'
 title: 'Javascript - 호이스팅'
 categories: ['Javascript']
 summary: '자바스크립트에서 호이스팅은 어떻게 작동할까? 호이스팅의 개념과 그 우선순위까지 알아보자.'
-thumbnail: 'javascript'
-featuredImage: 'javascript.png'
+thumbnail: 'postsImages/javascript.png'
+featuredImage: 'postsImages/javascript.png'
 slug: 'post/1'
 ---
 

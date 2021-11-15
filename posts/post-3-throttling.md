@@ -4,8 +4,8 @@ title: 'Javascript - 쓰로틀링(throttling)'
 categories: ['Javascript']
 summary: '자바스크립트의 이벤트를 어떻게 효율적으로 관리할까?
 쓰로틀링이란 무엇이고 어떻게 사용하는지 알아보자.'
-thumbnail: 'javascript'
-featuredImage: 'javascript.png'
+thumbnail: 'postsImages/javascript.png'
+featuredImage: 'postsImages/javascript.png'
 slug: 'post/3'
 ---
 
